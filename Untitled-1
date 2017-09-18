@@ -3,19 +3,17 @@
 		<title>
 			Hello woooooooooorld isa meeeeeeeeeeee
 		</title>
+  img.width = width;
+  img.height = height;
+  img.alt = alt;
+
+  document.body.appendChild(img); 
+}
+		<create element>
 	</head>
-	<body
-	mario
-	wassuuuuuuuuuup
-	yipeeeeeeeeee
-	lol lol lol lol lol
-	lol lol lol lol 
-	lol lol lol 
-	lol lol
-	lol
-	lol lol
-	lol lol lol 
-	lol lol lol lol 
-	lol lol lol lol lol
+	<body>
+	<button onclick="show_image('http://google.com/images/logo.gif', 
+  276,110, 'Google Logo");'>Add Google Logo</button> 
+	
 	</body
 </html>
