@@ -2,19 +2,29 @@
    <head>
        <title>About me</title>
     </head>
-    <body
-       <selection>
+    <body>
+    <a href="index.html" />
+  	Home
+    </a>
+    About me
+       </nav>
+       <nav>
+       
+       <section>
         Grant Bilson
-       </selection>
-       <selection>
+       </section>
+       <section>
         i like science, i am making rockets.
         i like math to help with science.
         i like games because they are fun.
         i like to code it is fun.
         besides those 3 things i am nothing
-       </selection>
-        <selection>
+       </section>
+        <section>
         i like rock music, i dont like movies ,and i dont have a pet
        </selection>
+        </section>
+       <img style="width:100px;" src="https://m.popkey.co/3e83aa/YX0KE_s-200x150.gif"/>
+        </section>
     </body>
 </html>
