@@ -1,13 +1,35 @@
 <html>
    <head>
-       <title>About me!</title>
+       <title>img style="width:500px;" src="rocket.gif"/</title>
+       <style>
+		div{
+			background-color:pink;
+			color:white;
+			margin:40px;background-color:navy;padding:20px;
+	border-radius:40px;text-align:center;
+		}
+	  a:link{
+			background-color:black;
+			color:white;
+	  }
+	  a:visited{
+			background-color:black;
+			color:white;
+	  }
+	   a:hover{
+			background-color:black;
+			color:white;
+			font-size:50;
+	  }
+	  
+		</style>
+	</head>
+	<body style="background-color:black;color:black;
+	font-size:30px;font-weight:bolder;">
+	<div>
        <script>
        	body{
-       		/*background-image: url("cat.jpg");	
-       		background-repeat: no-repeat;
-			background-attachment: fixed;
-			background-position: center; 
-			background-color:black;*/
+       		
        	}
        </script>
     </head>
@@ -17,27 +39,40 @@
   	Home
     </a>
     About me
+    <a href="projects.html" />
+	projects
+	</a>
        </nav>
        <nav>
        
        <section>
         Grant Bilson
        </section>
-       <section style="color:green;">
-        i like science, i am making rockets.
+       <section style="color:white;">
+        
+       i like science, i am making rockets.
         i like math to help with science.
         i like games because they are fun.
         i like to code it is fun.
         besides those 3 things i am nothing
         
+        Test list
+        <ul>
+        	<li>I dont like movies</li>
+        	<li>I dont have a pet</li>
+        	<li>my favriote book is 21 leauges under the sea</li>
+        	<li>I my favriote movie is none, my favriote video gmae is duck season</li>
+        </ul>
+        
        </section>
-        <sectionsection style="color:green;">
-        i like rock music, i dont like movies ,and i dont have a pet
-          <break>
+        <section style="color:white;">
+        
+          <br>
         </section>
           <break>
-        <break>
+        <br>
        <img style="width:500px;" src="rocket.gif"/>
         </section>
+        </div>
     </body>
 </html>
