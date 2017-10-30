@@ -27,6 +27,18 @@
 	  }
 	  
 		</style>
+		<script>
+		    function hideImg(x) {
+		    	document.getElementById(x).style.visibility="hidden";
+		    	
+		    	setTimeout (function() { getImg (x) ; }, 3000);
+		}
+		 function getImg(x) {
+		    	document.getElementById(x).scr = "http://beforeitsnews.com/contributor/upload/106013/images/trump.gif";
+		    	document.getElementById(x).style.visibility="visible";
+		}
+		</script>
+		
 	</head>
 	<body style="background-color:white;color:blue;
 	font-size:30px;font-weight:bolder;">
@@ -46,12 +58,19 @@
 	<br>
 
     
-        <img style="width:400px;" src="http://beforeitsnews.com/contributor/upload/106013/images/trump.gif"/>
-         <img style="width:400px;" src="https://media1.tenor.com/images/446cf660504fd9575ab12776792cfbb0/tenor.gif?itemid=6118939"/>
+         <img id="imgt" style="width:400px;" src="http://beforeitsnews.com/contributor/upload/106013/images/trump.gif"; onclick="hideImg('imgt');">
+          <img id="imgn" style="width:400px;" src="https://media1.tenor.com/images/446cf660504fd9575ab12776792cfbb0/tenor.gif?itemid=6118939"; onclick="hideImg('imgn');">
+           <img id="imgg" style="width:400px;" src="https://static.tumblr.com/545caf2bf4b568066046adfd4c3c6f57/r8jitfa/tYfn90vo6/tumblr_static_tumblr_static__640.gif"; onclick="hideImg('imgg');">
+            <img id="imgc" style="width:400px;" src="http://38.media.tumblr.com/06e38590674aee0bd54d40b3dce652b2/tumblr_my1qkymdqd1qj5ahlo1_500.gif"; onclick="hideImg('imgc');">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/DBBt7IhHOFQ" frameborder="0" allowfullscreen></iframe>
         </section>
 	</section>
 	</div>
 		</body>
+		
+		
+		
+		
 
 
 </html>
