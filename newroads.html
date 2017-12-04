@@ -1,0 +1,383 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="icon" type="image/png" href="https://lt.newroads.org/img/nrs.ico"/>
+		<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
+		<meta name="google-site-verification" content="s7S0y44UGoeCIwznESZqLsBY2bGP9VosEdhhuvCW2c4" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8">
+		<meta name="viewport" content="width=1000, user-scalable=yes, minimum-scale=1.0" />
+		<title>Welcome to My Roads</title>
+				<script language="JavaScript" src="https://lt.newroads.org/js/jquery.old.js"></script>
+		<script language="JavaScript" src="https://lt.newroads.org/js/jquery-ui.old.js"></script>
+		<script language="JavaScript" src="https://lt.newroads.org/js/ui.datepicker.js"></script>
+		<script language="JavaScript" src="https://lt.newroads.org/js/global.js"></script>
+				<script type="text/javascript" src="https://lt.newroads.org/js/xajax_js/xajax_core.js" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+/* <![CDATA[ */
+window.setTimeout(
+ function() {
+  var scriptExists = false;
+  try { if (xajax.isLoaded) scriptExists = true; }
+  catch (e) {}
+  if (!scriptExists) {
+   alert("Error: the xajax Javascript component could not be included. Perhaps the URL is incorrect?\nURL: https://lt.newroads.org/js/xajax_js/xajax_core.js");
+  }
+ }, 2000);
+/* ]]> */
+</script>
+
+<script type="text/javascript" charset="UTF-8">
+/* <![CDATA[ */
+try { if (undefined == xajax.config) xajax.config = {}; } catch (e) { xajax = {}; xajax.config = {}; };
+xajax.config.requestURI = "https://lt.newroads.org/nrs_myroads/ajax/myhome.php";
+xajax.config.statusMessages = false;
+xajax.config.waitCursor = false;
+xajax.config.version = "xajax 0.5";
+xajax.config.legacy = false;
+xajax.config.defaultMode = "asynchronous";
+xajax.config.defaultMethod = "POST";
+/* ]]> */
+</script>
+
+<script type='text/javascript' charset='UTF-8'>
+/* <![CDATA[ */
+xajax_load_contextual_command_help = function() { return xajax.request( { xjxfun: 'load_contextual_command_help' }, { parameters: arguments } ); };
+xajax_save_user_pref = function() { return xajax.request( { xjxfun: 'save_user_pref' }, { parameters: arguments } ); };
+xajax_save_session_pref = function() { return xajax.request( { xjxfun: 'save_session_pref' }, { parameters: arguments } ); };
+xajax_site_search = function() { return xajax.request( { xjxfun: 'site_search' }, { parameters: arguments } ); };
+xajax_unimpersonate = function() { return xajax.request( { xjxfun: 'unimpersonate' }, { parameters: arguments } ); };
+xajax_add_command_ql = function() { return xajax.request( { xjxfun: 'add_command_ql' }, { parameters: arguments } ); };
+xajax_show_web_ql = function() { return xajax.request( { xjxfun: 'show_web_ql' }, { parameters: arguments } ); };
+xajax_add_web_ql = function() { return xajax.request( { xjxfun: 'add_web_ql' }, { parameters: arguments } ); };
+xajax_impersonate_child = function() { return xajax.request( { xjxfun: 'impersonate_child' }, { parameters: arguments } ); };
+xajax_show_request_form = function() { return xajax.request( { xjxfun: 'show_request_form' }, { parameters: arguments } ); };
+xajax_set_ql_request_category = function() { return xajax.request( { xjxfun: 'set_ql_request_category' }, { parameters: arguments } ); };
+xajax_add_ql_request = function() { return xajax.request( { xjxfun: 'add_ql_request' }, { parameters: arguments } ); };
+xajax_manage_widget_action = function() { return xajax.request( { xjxfun: 'manage_widget_action' }, { parameters: arguments } ); };
+xajax_update_layout = function() { return xajax.request( { xjxfun: 'update_layout' }, { parameters: arguments } ); };
+xajax_remove_widget = function() { return xajax.request( { xjxfun: 'remove_widget' }, { parameters: arguments } ); };
+/* ]]> */
+</script>
+
+<script type='text/javascript' charset='UTF-8'>
+xajax.callback.global.onRequest = function() { onXajaxCall(); };
+xajax.callback.global.onComplete = function() { onXajaxReturn(); };
+</script>
+				<script language="JavaScript" type="text/javascript" src="https://lt.newroads.org/js/jquery.make_dropdown.js"></script>
+<script language="JavaScript" type="text/javascript" src="https://lt.newroads.org/js/private.old.js"></script>
+<script language="JavaScript" type="text/javascript" src="https://lt.newroads.org/js/ui.draggable.js"></script>
+<script language="JavaScript" type="text/javascript" src="https://lt.newroads.org/js/ui.sortable.js"></script>
+<script language="JavaScript" type="text/javascript" src="https://lt.newroads.org/js/jquery.timers.js"></script>
+<script language="JavaScript" type="text/javascript" src="https://lt.newroads.org/nrs_myroads/js/myhome.js"></script>
+<script language="JavaScript" type="text/javascript" src="https://lt.newroads.org/portal_widgets/polls/polls.js"></script>
+<script language="JavaScript" type="text/javascript" src="https://lt.newroads.org/portal_widgets/notifications/notifications.js"></script>
+<script language="JavaScript" type="text/javascript" src="https://lt.newroads.org/portal_widgets/personal_info/personal_info.js"></script>
+<script language="JavaScript" type="text/javascript" src="https://lt.newroads.org/portal_widgets/student_classes/student_classes.js"></script>
+<script language="JavaScript" type="text/javascript" src="https://lt.newroads.org/portal_widgets/nrs_news/nrs_news.js"></script>
+
+						<link type="text/css" rel="stylesheet" href="https://lt.newroads.org/css/jquery-ui.old.css" />
+				<link type="text/css" rel="stylesheet" href="https://lt.newroads.org/css/private_style.old.css" />
+<link type="text/css" rel="stylesheet" href="https://lt.newroads.org/portal_widgets/polls/polls.css" />
+<link type="text/css" rel="stylesheet" href="https://lt.newroads.org/portal_widgets/notifications/notifications.css" />
+<link type="text/css" rel="stylesheet" href="https://lt.newroads.org/portal_widgets/personal_info/personal_info.css" />
+<link type="text/css" rel="stylesheet" href="https://lt.newroads.org/portal_widgets/student_classes/student_classes.css" />
+
+			</head>
+	<body >
+		<form name=nrs_form id=nrs_form enctype="multipart/form-data" method=POST action="https://lt.newroads.org/index.php" onsubmit="return false;" style="height: 100%;">
+			<input type=hidden name=module>
+			<input type=hidden name=command>
+			<input type=hidden name=parameter>
+			<nav class="admin group not_printable" id="admin_menu">
+	<ul>
+				<li >
+			<a 
+				href="#" 
+				onclick="execute_command('workgroups','','');" 
+				
+			>Workgroups</a>
+			<ul class="admin-sub-menu-wrapper group">
+								<li>
+						<a href="#" onclick="execute_command('workgroups','my_wgs','');">
+						<header><span>&raquo;</span> My Workgroups</header>
+						<footer>Ability to view workgroups that I belong to, sign up for public worgkgroups and a link to create/manage workgroups.</footer>
+						</a>
+				</li>
+							</ul>
+		</li>
+			</ul>
+</nav>
+<header class="main group not_printable">
+
+	<section class="headerCol1">
+		<!--<section class="logo"><img src="https://lt.newroads.org/img/logo_bug.png" alt="Go to My Roads" title="Go to My Roads" onclick="execute_command('nrs_myroads','myhome','');"></section>-->
+		<section class="date">
+			Monday, Nov 13 2017 &bull; <span class="main">Fall Semester</span>
+		</section>
+		<h1>New Roads Learning Tool v.1 </h1>
+	</section>
+	
+	<section class="headerCol2">
+		<!-- begin User Navigation	< -->
+		<nav class="user">
+			<section class="logged_in_container">
+									Welcome <strong>Grant</strong>!
+																		&nbsp;<a href="#" onclick="execute_command('public','logoff','');">&#8250;&nbsp;Log Off</a>
+							
+			</section>
+			<nav class="user-links " id="user_menu">
+				<ul>
+										<li class=active style="position: relative;">
+						<a href="#">My Roads</a>
+						<ul class="user-sub-menu-wrapper group ">
+														<li>
+																<a href="#" onclick="execute_command('nrs_myroads','manage_portal','');">
+									<header><span>&raquo;</span> Portal Page Settings</header>
+									<footer>Ability to add widgets, change the layout and set widget options for the portal page.</footer>
+								</a>
+															</li>
+														<li>
+																<a href="#" onclick="execute_command('nrs_myroads','manage_documents','');">
+									<header><span>&raquo;</span> Documents</header>
+									<footer>Ability for students to manage their online documents.</footer>
+								</a>
+															</li>
+														<li>
+																<a href="#" onclick="execute_command('nrs_myroads','view_tests','');">
+									<header><span>&raquo;</span> My Tests</header>
+									<footer>Ability to view tests for a student.</footer>
+								</a>
+															</li>
+														<li>
+																<a href="#" onclick="execute_command('nrs_myroads','view_forums','');">
+									<header><span>&raquo;</span> View Forums</header>
+									<footer>Ability to view and interact with school's forums</footer>
+								</a>
+															</li>
+														<li>
+																<a href="#" onclick="execute_command('nrs_myroads','access_public_documents','');">
+									<header><span>&raquo;</span> Community Library</header>
+									<footer>Ability to access public documents.</footer>
+								</a>
+															</li>
+														<li>
+																<a href="#" onclick="execute_command('nrs_myroads','ticket_overview','');">
+									<header><span>&raquo;</span> My Requests</header>
+									<footer>Ability to view tickets made in the past and present</footer>
+								</a>
+															</li>
+													</ul>
+					</li>
+										<li  style="position: relative;">
+						<a href="#">Applications</a>
+						<ul class="user-sub-menu-wrapper group flush-right">
+														<li>
+																<a 
+																		href="http://mail.newroads.org" 
+									target="_new"
+																	>
+									<header><span>&raquo;</span> Web Mail</header>									
+								</a>								
+															</li>
+														<li>
+																<a 
+																		href="https://archive.newroads.org/owa" 
+									target="_new"
+																	>
+									<header><span>&raquo;</span> Old E-Mail</header>									
+								</a>								
+															</li>
+													</ul>
+					</li>
+										<li  style="position: relative;">
+						<a href="#">Directories</a>
+						<ul class="user-sub-menu-wrapper group flush-right">
+														<li>
+																<a 
+																		href="#none"
+									onclick="javascript:execute_command('nrs_myclasses','manage_documents','');"
+																	>
+									<header><span>&raquo;</span> My Online Documents</header>									
+								</a>								
+															</li>
+													</ul>
+					</li>
+										<li  style="position: relative;">
+						<a href="#">Quicklinks</a>
+						<ul class="user-sub-menu-wrapper group flush-right">
+													</ul>
+					</li>
+										<li style="position: relative;">
+						<a href="#">Help</a>
+						<ul class="user-sub-menu-wrapper group flush-right">
+														<li>
+								<a href="#" onclick="xajax_load_contextual_command_help('41');">
+									<header><span>&raquo;</span>Help on this Page</header>
+									<footer>View help on this page.</footer>
+								</a>						
+							</li>
+														<li>
+								<a href="#" onclick="add_command_ql();">
+									<header><span>&raquo;</span>Add QL Here</header>
+									<footer>Add a QuickLink item that will direct you to this page.</footer>
+								</a>						
+							</li>
+							<li>
+								<a href="#" onclick="xajax_show_web_ql();">
+									<header><span>&raquo;</span>Add Web QL</header>
+									<footer>Add a QuickLink item to an outside web page.</footer>
+								</a>						
+							</li>
+							<li>
+								<a href="#" onclick="execute_command('nrs_myroads','manage_qls','');">
+									<header><span>&raquo;</span>Organize QL</header>
+									<footer>Organize, change, and delete your QuickLinks.</footer>
+								</a>						
+							</li>
+														<li>
+								<a href="http://tickets.newroads.org" target="_new">
+									<header><span>&raquo;</span>Make a request.</header>
+									<footer>Makes a school request, such as help with facilities, technology, etc.</footer>
+								</a>						
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+		</nav>
+		<!-- end User Navigation	< -->
+		<section class="search_container">
+			<input 
+				type='text' 
+				name='search_term' 
+				id='search_term'
+				onEnter="xajax_site_search(jQuery('#search_term').val());"
+			> 
+			<div class="buttons">
+				<button type="button" class="positive" onclick="xajax_site_search(jQuery('#search_term').val());">Search							</button>
+			</div>
+		</section>
+	</section>
+	
+	<!-- begin main Navigation	< -->
+	<nav class="main" id="main_menu">
+		<ul>
+			<li id=home_tab>
+				<a href="#" onclick="execute_command('nrs_myroads','myhome','');">Home</a>				
+			</li>
+						<li >
+				<a 
+					href="#" 
+					onclick="execute_command('nrs_roster','','');" 
+				>Rosters</a>
+				<ul class="sub-menu-wrapper group">
+										<li>
+						<a href="#" onclick="execute_command('nrs_roster','view_rosters','');">
+							<header><span>&raquo;</span> View Rosters</header>
+							<footer>Displays the school roster</footer>
+						</a>						
+					</li>
+									</ul>
+			</li>
+					</ul>
+	</nav>
+	<!-- end main Navigation	< -->
+</header>
+
+
+<nav class="tabs group not_printable">
+	<h1>
+				My Roads
+			</h1>
+		<ul>
+					
+	</ul>
+	</nav>
+
+<section class="main group" id="main-content">
+		<div id=portal_widgets>
+		<ul id=column_1 class="portal_column three_column">
+				<li class="portal_widget" widget_name="polls" id="widget_polls">
+			<div class=portal_widget_head>
+								<h3>School Poll</h3>
+			</div>
+			<div id=polls_content class=portal_widget_contents>
+				<i>Loading Widget...</i>
+			</div>
+		</li>
+				<li class="portal_widget" widget_name="notifications" id="widget_notifications">
+			<div class=portal_widget_head>
+								<h3>System Notifications</h3>
+			</div>
+			<div id=notifications_content class=portal_widget_contents>
+				<i>Loading Widget...</i>
+			</div>
+		</li>
+				<li class="portal_widget" widget_name="personal_info" id="widget_personal_info">
+			<div class=portal_widget_head>
+								<h3>Personal Information</h3>
+			</div>
+			<div id=personal_info_content class=portal_widget_contents>
+				<i>Loading Widget...</i>
+			</div>
+		</li>
+			</ul>
+		<ul id=column_2 class="portal_column three_column">
+				<li class="portal_widget" widget_name="student_classes" id="widget_student_classes">
+			<div class=portal_widget_head>
+								<h3>My Classes</h3>
+			</div>
+			<div id=student_classes_content class=portal_widget_contents>
+				<i>Loading Widget...</i>
+			</div>
+		</li>
+			</ul>
+		<ul id=column_3 class="portal_column three_column">
+				<li class="portal_widget" widget_name="nrs_news" id="widget_nrs_news">
+			<div class=portal_widget_head>
+								<h3>My Roads News</h3>
+			</div>
+			<div id=nrs_news_content class=portal_widget_contents>
+				<i>Loading Widget...</i>
+			</div>
+		</li>
+			</ul>
+	</div>		
+	<nav class="push"><!--Sticky Footer Push--></nav>
+</section>
+
+<footer class="main not_printable">
+    <div class="col_l" style="bottom:0px;left:0px; margin:0px; padding:0 0 20px 25px;"></div>
+	<!-- end #col_l -->
+	<div class="col_r">
+		<ul>
+		  <li><a href="/aboutus/welcome.php">about us</a></li>
+		  <li><a href="/admissions/overview.php">admissions</a></li>
+		  <li><a href="/programs/overview.php">our programs</a></li>
+		  <li><a href="/community/administration.php">our community</a></li>
+		  <li><a href="/research/c4el.php">our research</a></li>
+		  <li><a href="/joinus/overview.php">join us</a></li>
+		  <li><a href="/joinus/donate.php">donate</a></li>
+		  <li><a href="http://www.newroads.org/web/board$/index.htm">board</a></li>
+		</ul> 
+		<div class="copyright">
+			<ul>
+				<li>� 2011 New Roads School.</li>
+			</ul>
+		</div><!-- end #copyright -->
+	</div><!-- end #col_r -->
+</footer>
+
+<div id="global_popup_fade_background" class="modelpopup_bg not_printable"></div>
+
+<div id="global_popup_container" class="modal-box wrapper modelpopup_wrapper not_printable">
+	<div class="inside green">
+		<span class="modal-close" onclick="close_global_popup();"><span>Close</span></span>
+		<div id=global_popup_content></div>
+	</div>
+</div>
+
+		</form>
+	</body>
+</html>

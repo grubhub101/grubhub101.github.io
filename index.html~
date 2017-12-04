@@ -17,12 +17,12 @@
 			color:green;
 	  }
 	  a:visited{
-			background-color:black;
+			background-color:green;
 			color:blue;
 	  }
 	   a:hover{
-			background-color:black;
-			color:blue;
+			background-color:pink;
+			color:red;
 			font-size:50;
 	  }
 	  
@@ -34,12 +34,44 @@
 	
 	Home
 	<a href="AboutMe.html" />
-	About Me
+	A
+	
+	</a>
+	<a href="AboutMe.html" />
+	b
+	
+	</a>
+	<a href="AboutMe.html" />
+	o
+	
+	</a>
+	<a href="AboutMe.html" />
+	u
+	
+	</a>
+	<a href="AboutMe.html" />
+	t
+	
+	</a>
+	<a href="AboutMe.html" />
+	.
+	
+	</a>
+	<a href="AboutMe.html" />
+	M
+	
+	</a>
+	<a href="AboutMe.html" />
+	e
 	
 	</a>
 	
 	<a href="projects.html">
-	projects
+	</section>
+       <img style="width:100px;" src="http://media.doink.com/thumbnail/2e976b14-14b3-4986-b10e-3673a77b8d85/thumbnail.png"/>
+       
+      
+        </section>
 	</a>
 	
 	</a>
@@ -48,33 +80,14 @@
 	hello, this is grape bison
 	<section>
 	i will be your host
-	</section><html>
-	<head>
+	</section>
+	
+	
+
+	
 	 
-		<title>
-			aaaaaaaaaahdsjhshfgsdahfsdafsdgdshfgshbsdhjcgsdh
-			
-		</title>
-		<style>
-		div{
-			background-color:b;
-			color:magenta;
-			margin:40px;background-color:black;padding:20px;
-	border-radius:200px;text-align:center;
-		}
-	  a:link{
-			background-color:black;
-			color:green;
-	  }
-	  a:visited{
-			background-color:black;
-			color:blue;
-	  }
-	   a:hover{
-			background-color:black;
-			color:blue;
-			font-size:50;
-	  }
+
+	  
 	  
 		</style>
 	</head>
@@ -86,6 +99,29 @@
 
 	
 	  <p>
+	  <li>
+	        <a href="clickable.html">
+	  .......hang
+	        </a>
+	  
+	   </li>
+	   <li>
+	      <a href="project2.html">
+	  project 2
+	        </a>
+	  
+	  
+	   </li>
+	   <li>
+	      <a href="TestHide.html">
+	  nuke
+	        </a>
+	  </p>
+	  
+	  <p>
+	     </li>
+	     <li>project2</li>
+	     <li>project3</li>
 	  
 	  </p>
 	   </section>
