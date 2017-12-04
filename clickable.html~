@@ -27,6 +27,11 @@
 	  }
 	  
 		</style>
+			<script>
+					function clickme () {
+						document.getElementById("circle").innerHTML="hallucinating yet?";
+					}		
+				</script>
 	</head>
 	<body style="background-color:white;color:blue;
 	font-size:30px;font-weight:bolder;">
@@ -47,8 +52,18 @@
 
 	hello, this is grape bison
 	<section>
-	<img scr="fire.gif" style+"300px;"/>
 	<br>
-	name: <input type="click me!" />
+		name:<input type="text"/>
+		<input type= "button" value="click me!" onclick="clickme();"
+	<section>
+	   <div id="circle"style="height:100px;width:200px;background-color:blue;
+	 		  border-radius:20px;position:relative;top:20px;left:200px;"></div>
+	 		  </div>
+	 		  
+	 		  <br>
+	 		  
+	 		      
+	<img scr="fire.gif" style+"300px;"/>
+	
 	</section>
 </html>

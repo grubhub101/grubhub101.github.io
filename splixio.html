@@ -1,928 +1,301 @@
-
-
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html>
 <head>
-<title>Duck Life: Treasure Hunt Hacked | ArcadePreHacks.com</title>
-<meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-<meta name="keywords" content="Duck Life: Treasure Hunt, hacked, arcade games, free games, flash games, online games, play games" />
-<meta name="description" content="Play Duck Life: Treasure Hunt – From ArcadePrehacks.com. After the Fire Duck was defeated, the volcanic eruption revealed an ancient cave. Treasure is inside! Are you ready to take the challenge and explore the cave? Are you swift enough to survive in this fast paced action adventure! In fact, this is the most epic adventure in the DuckLife world yet!" />
-<link rel="canonical" href="http://www.arcadeprehacks.com/game/27344/-duck-life-treasure-hunt.html" />
-<meta property="og:type" content="game" />
-<meta property="og:url" content="http://www.arcadeprehacks.com/game/27344/-duck-life-treasure-hunt.html" />
-<meta property="og:image" content="http://www.arcadeprehacks.com/img/649271_ducklifetreasurehunt-hacked.png" />
-<meta property="og:site_name" content="ArcadePrehacks.com" />
-<meta property="og:title" content="Duck Life: Treasure Hunt Hacked | ArcadePreHacks.com" />
-<meta property="og:description" content="Key Hacks: Press [1]  Toggle godmode - [2]  Toggle cooldown - [3]  Special 1 - [4]  Special 2 - [5]  Special 3 - [6]  Special 4 - [7]  Money - [8]  Diamonds" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:site" content="@ArcadePreHacks" />
-<meta name="twitter:creator" content="@ArcadePreHacks" />
-<meta name="twitter:title" content="Duck Life: Treasure Hunt Hacked | ArcadePreHacks.com" />
-<meta name="twitter:url" content="http://www.arcadeprehacks.com/game/27344/-duck-life-treasure-hunt.html" />
-<meta name="twitter:description" content="Key Hacks: Press [1]  Toggle godmode - [2]  Toggle cooldown - [3]  Special 1 - [4]  Special 2 - [5]  Special 3 - [6]  Special 4 - [7]  Money - [8]  Diamonds" />
-<meta name="twitter:image:src" content="http://www.arcadeprehacks.com/img/649271_ducklifetreasurehunt-hacked.png" />
-<meta name="twitter:domain" content="ArcadePreHacks.com" />
-<link rel="stylesheet" type="text/css" href="http://www.arcadeprehacks.com/plugins/site/themes/arcadeprehacks/css/style.css?__v=030" />
-<link rel="shortcut icon" href="http://www.arcadeprehacks.com/favicon.ico" />
-<link rel="icon" href="http://www.arcadeprehacks.com/favicon.ico" />
-<script data-cfasync="false" type="text/javascript">
-            var freestar = freestar || {};
-            freestar.hitTime = Date.now();
-            freestar.queue = freestar.queue || [];
-            freestar.config = freestar.config || {};
-            freestar.debug = window.location.search.indexOf('fsdebug') === -1 ? false : true;
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Feed the Snake v 1.1 beta</title>
+<style>
+body
+{
+    background:#000;
+    color:#FFF;
+}
+canvas
+{
+    background:#FFF;
+}
+#controls
+{
+    position:absolute;
+    top:0;
+    right:0;
+    margin:10px;
+}
+</style>
+<script type="text/javascript">
+var snake = window.snake || {};
+function launchFullscreen(element) {
+  if(element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if(element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+  } else if(element.webkitRequestFullscreen) {
+    element.webkitRequestFullscreen();
+  } else if(element.msRequestFullscreen) {
+    element.msRequestFullscreen();
+  }
+}
+window.onload = function(){
+    document.addEventListener("fullscreenchange", function(){snake.game.adjust();});
+    document.addEventListener("webkitfullscreenchange", function(){snake.game.adjust();});
+    document.addEventListener("mozfullscreenchange", function(){snake.game.adjust();});
+    document.addEventListener("MSFullscreenChange", function(){snake.game.adjust();});
 
-            // Tag IDs set here, must match Tags served in the Body for proper setup
-            freestar.config.enabled_slots = [
-                "Arcadeprehacks_970x90_728x90_320x50_ATF_ROS",
-                "Arcadeprehacks_728x90_320x50_ATF_GamePages",
-                "Arcadeprehacks_300x250_BTF_Sidebar_GamePages",
-                "Arcadeprehacks_300x250_BTF_Comments"
-            ];
+    snake.game = (function()
+    {
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        var status=false;
+        var score = 0;
+        var old_direction = 'right';
+        var direction = 'right';
+        var block = 10;
+        var score = 0;
+        var refresh_rate = 250;
+        var pos = [[5,1],[4,1],[3,1],[2,1],[1,1]];
+        var scoreboard = document.getElementById('scoreboard');
+        var control = document.getElementById('controls');
+        var keys = {
+            37 : 'left',
+            38 : 'up',
+            39 : 'right',
+            40 : 'down'
+            };
+        function adjust()
+        {
+            if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement )
+            {
+                canvas.width=window.innerWidth;
+                canvas.height=window.innerHeight;
+                control.style.display='none';
+            }
+            else
+            {
+                canvas.width=850;
+                canvas.height=600;
+                control.style.display='inline';
+            }
+        }
+        var food = [Math.round(Math.random(4)*(canvas.width - 10)), Math.round(Math.random(4)*(canvas.height - 10)),];
+        function todraw()
+        {
+            for(var i = 0; i < pos.length; i++)
+            {
+                draw(pos[i]);
+            }
+        }
+        function giveLife()
+        {
+            var nextPosition = pos[0].slice();
+            switch(old_direction)
+            {
+                case 'right':
+                    nextPosition[0] += 1;
+                    break;
+                case 'left':
+                    nextPosition[0] -= 1;
+                    break;
+                case 'up':
+                    nextPosition[1] -= 1;
+                    break;
+                case 'down':
+                    nextPosition[1] += 1;
+                    break;    
+            }
+            pos.unshift(nextPosition);
+            pos.pop();
+        }
+        function grow()
+        {
+            var nextPosition = pos[0].slice();
+            switch(old_direction)
+            {
+                case 'right':
+                    nextPosition[0] += 1;
+                    break;
+                case 'left':
+                    nextPosition[0] -= 1;
+                    break;
+                case 'up':
+                    nextPosition[1] -= 1;
+                    break;
+                case 'down':
+                    nextPosition[1] += 1;
+                    break;    
+            }
+            pos.unshift(nextPosition);
+        }
+        function loop()
+        {
+            ctx.clearRect(0,0,canvas.width,canvas.height);
+            todraw();
+            giveLife();
+            feed();
+            if(is_catched(pos[0][0]*block,pos[0][1]*block,block,block,food[0],food[1],10,10))
+            {
+                score += 10;
+                createfood();
+                scoreboard.innerHTML = score;
+                grow();
+                if(refresh_rate > 100)
+                {
+                    refresh_rate -=5;
+                }
+            }
+            snake.game.status = setTimeout(function() { loop(); },refresh_rate);
+        }
+        window.onkeydown = function(event){
+             direction = keys[event.keyCode];
+                if(direction)
+                {
+                    setWay(direction);
+                    event.preventDefault();
+                }
+            };
+        function setWay(direction)
+        {
+            switch(direction)
+            {
+                case 'left':
+                    if(old_direction!='right')
+                    {
+                        old_direction = direction;
+                    }
+                    break;
+                case 'right':
+                    if(old_direction!='left')
+                    {
+                        old_direction = direction;
+                    }
+                    break;
+                case 'up':
+                    if(old_direction!='down')
+                    {
+                        old_direction = direction;
+                    }
+                    break;
+                case 'down':
+                    if(old_direction!='up')
+                    {
+                        old_direction = direction;
+                    }
+                    break;
+            }
 
-            !function(a,b){var c=b.getElementsByTagName("script")[0],d=b.createElement("script"),e="https://a.pub.network/arcadeprehacks";e+=freestar.debug?"/qa/pubfig.min.js":"/pubfig.min.js",d.async=!0,d.src=e,c.parentNode.insertBefore(d,c)}(window,document);
-
-        </script>
+        }
+        function feed()
+        {
+            ctx.beginPath();
+            ctx.fillStyle = "#ff0000";
+            ctx.fillRect(food[0],food[1],10,10);
+            ctx.fill();
+            ctx.closePath();
+        }
+        function createfood()
+        {
+            food = [Math.round(Math.random(4)*850), Math.round(Math.random(4)*600)];
+        }
+        function is_catched(ax,ay,awidth,aheight,bx,by,bwidth,bheight) {
+            return !(
+            ((ay + aheight) < (by)) ||
+            (ay > (by + bheight)) ||
+            ((ax + awidth) < bx) ||
+            (ax > (bx + bwidth))
+            );
+        }
+        function draw(pos)
+        {
+            var x = pos[0] * block;
+            var y = pos[1] * block;
+            if(x >= canvas.width || x <= 0 || y >= canvas.height || y<= 0)
+            {
+                    document.getElementById('pause').disabled='true';
+                    snake.game.status=false;
+                    ctx.clearRect(0,0,canvas.width,canvas.height);
+                    ctx.font='40px san-serif';
+                    ctx.fillText('Game Over',300,250);
+                    ctx.font = '20px san-serif';
+                    ctx.fillStyle='#000000';
+                    ctx.fillText('To Play again Refresh the page or click the Restarts button',200,300);
+                    throw ('Game Over');
+            }
+            else
+            {
+                ctx.beginPath();
+                ctx.fillStyle='#000000';
+                ctx.fillRect(x,y,block,block);
+                ctx.closePath();
+            }
+        }
+        function pause(elem)
+        {
+            if(snake.game.status)
+            {
+                clearTimeout(snake.game.status);
+                snake.game.status=false;
+                elem.value='Play'
+            }
+            else
+            {
+                loop();
+                elem.value='Pause';
+            }
+        }
+        function begin()
+        {
+            loop();
+        }
+        function restart()
+        {
+            location.reload();
+        }
+        function start()
+        {
+            ctx.fillStyle='#000000';
+            ctx.fillRect(0,0,canvas.width,canvas.height);
+            ctx.fillStyle='#ffffff';
+            ctx.font='40px helvatica';
+            ctx.fillText('Vignesh',370,140);
+            ctx.font='20px san-serif';
+            ctx.fillText('presents',395,190);
+            ctx.font='italic 60px san-serif';
+            ctx.fillText('Feed The Snake',240,280);
+            var img = new Image();
+            img.onload = function()
+            {
+                ctx.drawImage(img,300,300,200,200);
+                ctx.fillRect(410,330,10,10);
+            }
+            img.src ='snake.png';
+        }
+        function fullscreen()
+        {
+            launchFullscreen(canvas);
+        }
+        return {
+            pause: pause,
+            restart : restart,
+            start : start,
+            begin: begin,
+            fullscreen : fullscreen,
+            adjust : adjust,
+        };
+    })();
+    snake.game.start();
+}
+</script>
 </head>
 <body>
-<div id="azk30374" style="width:970px; margin:0 auto;position: relative;z-index: 11;"></div>
-<div class='body'>
-<div id="container">
-<div class='banner'>
-<img src='http://www.arcadeprehacks.com/plugins/site/themes/arcadeprehacks/img/banner.jpg?__v=001' alt='Arcade Prehacks' usemap="#homelink" width="1132" height="105" />
-<map name="homelink" id='homelink'>
-<area shape="rect" coords="95,0,622,100" href="http://www.arcadeprehacks.com/" alt="Arcade Prehacks" title="Arcade Prehacks" />
-</map>
-<div class="members-menu">
-<form action='http://www.arcadeprehacks.com/login/login.html' method='post'>
-<table>
-<tr><td>Username:</td><td style='text-align:right'><input type='text' name='username' class='input-login' /></td></tr>
-<tr><td>Password:</td><td style='text-align:right'><input type='password' name='password' class='input-login' /></td></tr>
-<tr><td colspan='2' style='text-align:right'><input type='submit' name='submit' value='Login' class='input-login-submit' /></td></tr>
-<tr><td colspan='2' style='text-align:center;padding:0px;'><a rel='nofollow' href='http://www.arcadeprehacks.com/login/recover.html' class='login-links'>Lost your password?</a></td></tr>
-<tr><td colspan='2' style='text-align:center;padding:0px;'><a rel='nofollow' href='http://www.arcadeprehacks.com/register/register.html' class='login-links'>Register here</a></td></tr>
-</table>
-<input type='hidden' name='params' value='login/login' />
-</form></div>
+<canvas width="850" height="600" id="canvas" style="border:1px solid #333;" onclick="snake.game.begin();">
+</canvas>
+<div id="controls" style="float:right; text-align:center;">
+    <input type="button" id="pause" value="Play" onClick="snake.game.pause(this);" accesskey="p">
+    <input type="button" id="restart" value="Restart" onClick="snake.game.restart();">
+    <br/><br/>
+    <input type="button" id="fullscreen" value="Play Fullscreen" onClick="snake.game.fullscreen();">
+    <br/><br/>
+    <div style="font-size:24px;">
+    Score : 
+    <span id="scoreboard">0</span>
+    </div>
 </div>
-<div class='top-nav'>
-<ul class='small-menu'><li><a href='http://www.arcadeprehacks.com/'>HOME</a><span class='spacer-small-menu'>|</span></li><li><a href='http://www.arcadeprehacks.com/request-hack.html'>REQUEST HACK</a><span class='spacer-small-menu'>|</span></li><li><a href='http://www.arcadeprehacks.com/forum/forum.php'>FORUM</a><span class='spacer-small-menu'></span></li></ul> <ul class='menu'>
-<li><a href='http://www.arcadeprehacks.com/category/Action.html'>Action</a><span class='spacer'></span></li><li><a href='http://www.arcadeprehacks.com/category/Adventure.html'>Adventure</a><span class='spacer'></span></li><li><a href='http://www.arcadeprehacks.com/category/Arcade.html'>Arcade</a><span class='spacer'></span></li><li><a href='http://www.arcadeprehacks.com/category/Beat-em-Up.html'>Beat em Up</a><span class='spacer'></span></li><li><a href='http://www.arcadeprehacks.com/category/Defence.html'>Defence</a><span class='spacer'></span></li><li><a href='http://www.arcadeprehacks.com/category/Racing.html'>Racing</a><span class='spacer'></span></li><li><a href='http://www.arcadeprehacks.com/category/RPG.html'>RPG</a><span class='spacer'></span></li><li><a href='http://www.arcadeprehacks.com/category/Shooting.html'>Shooting</a><span class='spacer'></span></li><li><a href='http://www.arcadeprehacks.com/category/Strategy.html'>Strategy</a><span class='spacer'></span></li><li><a href='http://www.arcadeprehacks.com/category/Tower-Defence.html'>Tower Defence</a><span class='spacer'></span></li><li><a href='http://www.arcadeprehacks.com/category/Puzzle.html'>Puzzle</a><span style='margin-left:6pt;'></span></li></ul>
-<span class='menuend'></span><div style='clear:both;'></div>
-<div class="search-form">
-<form action='http://www.arcadeprehacks.com/index.php' method='get'>
-<input type='hidden' name='params' value='search' /><input type='text' class='searchtext' name='q' />
-<input type='submit' value='' class='searchbutton' />
-</form>
-</div>
-</div>
-<div class='ads'>
-
-<div align="center" id="Arcadeprehacks_970x90_728x90_320x50_ATF_ROS">
-<script data-cfasync="false" type='text/javascript'>
-                                    freestar.queue.push(function () { googletag.display('Arcadeprehacks_970x90_728x90_320x50_ATF_ROS'); });
-                                </script>
-</div>
-</div>
-<div class='ads-small'>
-<a href='http://www.mutantalienassault.com/?utm_source=235x90&utm_medium=ad2&utm_campaign=aph' target='_blank'><img src='http://www.arcadeprehacks.com/images/aph-smaa-235x90-2.png' width='235' height='90' /></a> </div>
-<div id="body">
-<div id="left">
-<div itemscope itemtype="http://schema.org/CreativeWork">
-<div class="box-game">
-<div class='box-top'>
-<div class='box-top-left box-top-left-game'>&nbsp;</div>
-<div class='box-top-middle box-top-middle-game'>
-<h1 itemprop="name">Duck Life: Treasure Hunt Hacked</h1>
-<img src="/plugins/site/themes/arcadeprehacks/img/light-button.png" alt="lightbutton" class="lightbox" />
-<a href='http://www.arcadeprehacks.com/game/27345/-duck-life-treasure-hunt.html'>Play Duck Life: Treasure Hunt Unhacked</a> </div>
-<div class='box-top-right box-top-right-game'>&nbsp;</div>
-</div>
-<div class='box-content'>
-<div class='box-content-left'>&nbsp;</div>
-<div class='box-content-middle-game game-page-fix'>
-<div class="gamezone-zone">
-<div style="height: 450px;width: 800px;margin:auto;">
-<div id='gamezone' style="height: 450px;width: 800px;display:none">
-<div class='gamelighhelper' id='id_for_zone' style='width:802px; height: 451px; '><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="800" height="450"><param name="movie" value="http://www.arcadeprehacks.com/securedswf/9036ad62.swf"><param name="quality" value="high"><param name="menu" value="true"><param value="direct" name="wmode"><embed wmode="direct" width="800" height="450" src="http://www.arcadeprehacks.com/securedswf/9036ad62.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" /></object></div> </div>
-<script data-autoload="true" data-id="thePlayer" data-hidden-container="gamezone" data-config="//config.playwire.com/1511/v2/pre_content.json" data-width="100%" data-height="100%" type="text/javascript" charset="utf-8" src="//cdn.playwire.com/bolt/js/zeus/embed.js">
-                            </script>
-</div>
-</div>
-<div id="s_undergame">
-
-
-<div align="center" id="Arcadeprehacks_728x90_320x50_ATF_GamePages">
-<script data-cfasync="false" type='text/javascript'>
-                            freestar.queue.push(function () { googletag.display('Arcadeprehacks_728x90_320x50_ATF_GamePages'); });
-                        </script>
-</div>
-</div>
-</div>
-<div class='box-content-right'></div>
-</div>
-<div class='box-bottom-thin'>
-<div class='thin-box-bottom-left'></div>
-<div class='thin-box-bottom-middle'></div>
-<div class='thin-box-bottom-right'></div>
-</div>
-</div>
-<div class="box-sub-game">
-<div class='box-top'>
-<div class='box-top-left'>&nbsp;</div>
-<div class='box-top-middle'><h2>Game &amp; Hack Information</h2></div>
-<div class='box-top-right'>&nbsp;</div>
-</div>
-<div class='box-content'>
-<div class='box-content-left'>&nbsp;</div>
-<div class='box-content-middle-global game-info'>
-<div class="game-info-box">
-<span>Nov 29, 2014</span>
-<span class="game-info-box-separator"></span>
-<span>300485 Plays</span>
-<span class="game-info-box-separator"></span>
-<span>Arcade</span>
-<span class="game-info-box-separator"></span>
-<span>35.75 KB</span>
-</div>
-<p>
-<b>Hacked By:</b>
-<a href='http://www.arcadeprehacks.com/profile/view/445403/fav-1/hacks-1.html'>selectLOL</a><span title='Moderator' class='mod-icon'>&nbsp;&nbsp;&nbsp;</span><span title='User Offline' class='offline-icon'>&nbsp;&nbsp;&nbsp;&nbsp;</span> </p>
-<div class='game-social-container'>
-<div class='social-fb'>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-    		                          var js, fjs = d.getElementsByTagName(s)[0];
-    		                          if (d.getElementById(id)) {return;}
-    		                          js = d.createElement(s); js.id = id;
-    		                          js.src = "//connect.facebook.net/en_US/all.js#appId=139471766149605&xfbml=1";
-    		                          fjs.parentNode.insertBefore(js, fjs);
-    		                        }(document, 'script', 'facebook-jssdk'));</script>
-<div class="fb-like" data-href="http://www.arcadeprehacks.com/game/27344/-duck-life-treasure-hunt.html" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="arial"></div>
-</div>
-<div class='social-google'>
-<div class="g-plusone" data-size="medium" data-width="300"></div>
-
-<script type="text/javascript">
-                                      (function() {
-                                        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                                        po.src = 'https://apis.google.com/js/platform.js';
-                                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-                                      })();
-                                    </script>
-</div>
-<div class='social-twitter'>
-<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.arcadeprehacks.com/game/27344/-duck-life-treasure-hunt.html" data-text="Check out this awesome cheat site for flash games!" data-count="horizontal">Tweet</a><script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-</div>
-<div class='social-stumble'>
-<iframe width="74" height="18" style="overflow: hidden; margin: 0pt; padding: 0pt; border: 0pt none;" src="http://www.stumbleupon.com/badge/embed/1/?url=http%3A%2F%2Fwww.arcadeprehacks.com%2Fgame%2F27344%2F-duck-life-treasure-hunt.html" id="iframe-stmblpn-widget-1"></iframe>
-</div>
-</div>
-<p>
-<b>Hack Information:</b><br />
-<span>Key Hacks: Press <span class="game-key">1</span> Toggle godmode - <span class="game-key">2</span> Toggle cooldown - <span class="game-key">3</span> Special 1 - <span class="game-key">4</span> Special 2 - <span class="game-key">5</span> Special 3 - <span class="game-key">6</span> Special 4 - <span class="game-key">7</span> Money - <span class="game-key">8</span> Diamonds</span>
-</p>
-<p>
-<b>Game Information</b><br />
-<span itemprop="description">After the Fire Duck was defeated, the volcanic eruption revealed an ancient cave. Treasure is inside! Are you ready to take the challenge and explore the cave? Are you swift enough to survive in this fast paced action adventure! In fact, this is the most epic adventure in the DuckLife world yet!</span>
-</p>
- <div class="game-info-box">
-<span><b>Rating:</b> </span>
-<div style='display:inline;'>
-<script type='text/javascript' src='http://www.arcadeprehacks.com/plugins/site/themes/arcadeprehacks/ajax.js'></script>
-<div id='ratingspan' style='display:inline;'>
-<div class='inline-rating' style='display:inline;'>
-<span id='game_rated'>32</span>
-<ul class='star-rating small-star'>
-<li class='current-rating' id='current-rating' style='width:70%;'>Currently <span>3.5</span>/5</li></ul>
-</div>
-</div>&nbsp;&nbsp;&nbsp;<span>&nbsp;Login to vote.</span> </div>
-<span class="game-info-box-separator"></span>
-<span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-<span><span itemprop="ratingValue">3.66</span></span>
-<span>&nbsp;based on&nbsp;</span><span class="votes" itemprop="ratingCount">32</span><span>&nbsp;votes.</span>
-<meta itemprop="worstRating" content="1" />
-<meta itemprop="bestRating" content="5" />
-</span>
-<span class="game-info-box-separator"></span>
-<span>
-Game or hack broken? <a href="javascript:popup('http://www.arcadeprehacks.com/report/27344.html', 350, 280)" rel='nofollow'>Report it.</a>
-</span>
-</div>
-</div>
-<div class='box-content-right'></div>
-</div>
-<div class='box-bottom-thin'>
-<div class='thin-box-bottom-left'></div>
-<div class='thin-box-bottom-middle'></div>
-<div class='thin-box-bottom-right'></div>
-</div>
-</div>
-<div id="right-game">
-<div id="rightad">
-
-<div align="center" id="Arcadeprehacks_300x250_BTF_Sidebar_GamePages">
-<script data-cfasync="false" type='text/javascript'>
-						        freestar.queue.push(function () { googletag.display('Arcadeprehacks_300x250_BTF_Sidebar_GamePages'); });
-						    </script>
-</div>
-</div>
-<div class="small-box">
-<div class='box-top'>
-<div class='box-top-left'></div>
-<div class='box-top-middle'><span>Random Game</span></div>
-<div class='box-top-right'></div>
-</div>
-<div class='box-content'>
-<div class='box-content-left'></div>
-<div class='box-content-middle'>
-<a href='http://www.arcadeprehacks.com/random-game.html' class='random_a_1'>
-
-<span class='question-mark'></span>
-</a>
-<a href='http://www.arcadeprehacks.com/random-game.html' class='random_a_2'>
-Random Game
-</a><br />
-<div class='random_div'>Click here to be taken to a random hacked game</div>
-</div>
-<div class='box-content-right'></div>
-</div>
-<div class='box-bottom-thin'>
-<div class='thin-box-bottom-left'></div>
-<div class='thin-box-bottom-middle'></div>
-<div class='thin-box-bottom-right'></div>
-</div>
-</div> <div class="small-box">
-<div class='box-top'>
-<div class='box-top-left'></div>
-<div class='box-top-middle'>
-<h3>Games being played by others</h3>
-<a href="javascript:void(0);" rel="nofollow" style="right:36px;top:4px;"><img src="http://www.arcadeprehacks.com/images/left-arrow-dim.png" alt="arrow left" onclick="slideLeft()" id="arrowleft" /></a>
-<a href="javascript:void(0);" rel="nofollow" style="top:4px;"><img src="http://www.arcadeprehacks.com/images/right-arrow.png" onclick="slideRight()" alt="arrow right" id="arrowright" /></a>
-</div>
-<div class='box-top-right'></div>
-</div>
-<div class='box-content'>
-<div class='box-content-left'></div>
-<div class='box-content-middle clearfix' style="position: relative; height: 485px; width: 295px;">
-<div id="pboGames1">
-<div class='box-right-grey-odd'>
-<div class='box-content-middle-thumb'>
-<a href="http://www.arcadeprehacks.com/game/13673/Effing-Machines.html"><img src='http://www.arcadeprehacks.com/img/effingmachinesrhiken714.png' alt='Effing Machines' width='100' height='100' title='Effing Machines' /></a>
-</div>
-<div class='box-content-middle-desc-others'>
-<h3 title='Effing Machines'><a href="http://www.arcadeprehacks.com/game/13673/Effing-Machines.html">Effing Machines</a></h3><br />
-<span>65553 plays&nbsp;&nbsp;
-<span class='rate_4' title='rating 4 Stars'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-</span>
-<p class='small-game-desc' title='Hackmenu (Tab Open/Close): Press [1] Metals +10000'><b>Cheats:</b> Hackmenu (Tab Open/Close): Press [1] Metals +10000</p>
-<p title='leverage419'><b>Hacked By:</b> leverage419</p>
-</div>
-</div>
-<div class='box-right-grey'>
-<div class='box-content-middle-thumb'>
-<a href="http://www.arcadeprehacks.com/game/15409/Bouncy-Fire-Fighters.html"><img src='http://www.arcadeprehacks.com/img/584239_bouncy_fire_fighters_cpm_v.png' alt='Bouncy Fire Fighters' width='100' height='100' title='Bouncy Fire Fighters' /></a>
-</div>
-<div class='box-content-middle-desc-others'>
-<h3 title='Bouncy Fire Fighters'><a href="http://www.arcadeprehacks.com/game/15409/Bouncy-Fire-Fighters.html">Bouncy Fire Fighters</a></h3><br />
-<span>26172 plays&nbsp;&nbsp;
-<span class='rate_4' title='rating 4 Stars'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-</span>
-<p class='small-game-desc' title='Hackbar: Press [1] Lives - [2] Jump power - [3] Rain [4] Super man - [5] Win level - [6] Remove fails'><b>Cheats:</b> Hackbar: Press [1] Lives - [2] Jump power - [3] Rain [4] Sup...</p>
-<p title='selectLOL'><b>Hacked By:</b> selectLOL</p>
-</div>
-</div>
-<div class='box-right-grey-odd'>
-<div class='box-content-middle-thumb'>
-<a href="http://www.arcadeprehacks.com/game/15608/Underwater.html"><img src='http://www.arcadeprehacks.com/img/under_water.png' alt='Underwater' width='100' height='100' title='Underwater' /></a>
-</div>
-<div class='box-content-middle-desc-others'>
-<h3 title='Underwater'><a href="http://www.arcadeprehacks.com/game/15608/Underwater.html">Underwater</a></h3><br />
-<span>47464 plays&nbsp;&nbsp;
-<span class='rate_2' title='rating 2 Stars'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-</span>
-<p class='small-game-desc' title='Hackbar: Press [1] Win level'><b>Cheats:</b> Hackbar: Press [1] Win level</p>
-<p title='selectLOL'><b>Hacked By:</b> selectLOL</p>
-</div>
-</div>
-<div class='box-right-grey'>
-<div class='box-content-middle-thumb'>
-<a href="http://www.arcadeprehacks.com/game/16035/Santa-Rockstar%3A-Metal-Xmas-2.html"><img src='http://www.arcadeprehacks.com/img/santarockstar2copyorignalwe.png' alt='Santa Rockstar: Metal Xmas 2' width='100' height='100' title='Santa Rockstar: Metal Xmas 2' /></a>
-</div>
-<div class='box-content-middle-desc-others'>
-<h3 title='Santa Rockstar: Metal Xmas 2'><a href="http://www.arcadeprehacks.com/game/16035/Santa-Rockstar%3A-Metal-Xmas-2.html">Santa Rockstar: Metal Xmas 2</a></h3><br />
-<span>30209 plays&nbsp;&nbsp;
-<span class='rate_4' title='rating 4 Stars'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-</span>
-<p class='small-game-desc' title='Hackbar: Press [Z] Refill Rock Meter - [X] Toggle Rock Meter'><b>Cheats:</b> Hackbar: Press [Z] Refill Rock Meter - [...</p>
-<p title='leverage419'><b>Hacked By:</b> leverage419</p>
-</div>
-</div>
-</div>
-</div>
-<div class='box-content-right'></div>
-</div>
-<div class='box-bottom-thin'>
-<div class='thin-box-bottom-left'></div>
-<div class='thin-box-bottom-middle'></div>
-<div class='thin-box-bottom-right'></div>
-</div>
-</div>
-<div class="small-box">
-<div class="box-top">
-<div class="box-top-left"></div>
-<div class="box-top-middle"><span>Sponsored Games</span></div>
-<div class="box-top-right"></div>
-</div>
-<div class="box-content">
-<div class="box-content-left"></div>
-<div class="box-content-middle">
-<script src="http://server.cpmstar.com/view.aspx?poolid=14428&amp;multi=3&amp;script=1"></script>
-<script src="http://server.cpmstar.com/cached/textad.js"></script>
-<div class="box-right-grey-odd">
-<script type="text/javascript">
-					 //<![CDATA[
-                          (function() {
-						document.write('<div class="box-content-middle-thumb"><a href="'+cpmStar.getLink()+'" target="_blank" rel="nofollow"><img width="100" height="100" align="left" class="gamethumb" alt="'+cpmStar.getTitle()+'" src="'+cpmStar.getImageUrl(100,100)+'"></a></div><div class="box-content-middle-desc-others"><h3 title="'+cpmStar.getTitle()+'"><a href="'+cpmStar.getLink()+'" target="_blank">'+cpmStar.getTitle()+'</a></h3><br/><span></span><p class="small-game-desc"><b>Desc:</b> '+((cpmStar.getDescription().length<120)?cpmStar.getDescription():cpmStar.getDescription().substr(0,120)+'...')+'</p></div>');
-						cpmStar.nextAd();
-						})();
-                          //]]>
-					</script>
-</div>
-<div class="box-right-grey">
-<script type="text/javascript">
-					 //<![CDATA[
-                          (function() {
-						document.write('<div class="box-content-middle-thumb"><a href="'+cpmStar.getLink()+'" target="_blank" rel="nofollow"><img width="100" height="100" align="left" class="gamethumb" alt="'+cpmStar.getTitle()+'" src="'+cpmStar.getImageUrl(100,100)+'"></a></div><div class="box-content-middle-desc-others"><h3 title="'+cpmStar.getTitle()+'"><a href="'+cpmStar.getLink()+'" target="_blank">'+cpmStar.getTitle()+'</a></h3><br/><span></span><p class="small-game-desc"><b>Desc:</b> '+((cpmStar.getDescription().length<120)?cpmStar.getDescription():cpmStar.getDescription().substr(0,120)+'...')+'</p></div>');
-						cpmStar.nextAd();
-						})();
-                          //]]>
-					</script>
-</div>
-<div class="box-right-grey-odd">
-<script type="text/javascript">
-			  		 //<![CDATA[
-                          (function() {
-			  			document.write('<div class="box-content-middle-thumb"><a href="'+cpmStar.getLink()+'" target="_blank" rel="nofollow"><img width="100" height="100" align="left" class="gamethumb" alt="'+cpmStar.getTitle()+'" src="'+cpmStar.getImageUrl(100,100)+'"></a></div><div class="box-content-middle-desc-others"><h3 title="'+cpmStar.getTitle()+'"><a href="'+cpmStar.getLink()+'" target="_blank">'+cpmStar.getTitle()+'</a></h3><br/><span></span><p class="small-game-desc"><b>Desc:</b> '+((cpmStar.getDescription().length<120)?cpmStar.getDescription():cpmStar.getDescription().substr(0,120)+'...')+'</p></div>');
-			  			})();
-                          //]]>
-			  		</script>
-</div>
-</div>
-<div class="box-content-right"></div>
-</div>
-<div class="box-bottom-thin">
-<div class="thin-box-bottom-left"></div>
-<div class="thin-box-bottom-middle"></div>
-<div class="thin-box-bottom-right"></div>
-</div>
-</div>
-</div>
-<div class="box-sub-game">
-<div class='box-top'>
-<div class='box-top-left'>&nbsp;</div>
-<div class='box-top-middle'><h2>Comments</h2></div>
-<div class='box-top-right'>&nbsp;</div>
-</div>
-<div class='box-content'>
-<div class='box-content-left'>&nbsp;</div>
-<div class='box-content-middle'>
-<div id="aj-comments-wrap">
-<div id="aj-comments-controls" style="text-align: center;">
-<form method="POST" onsubmit="return false">
-<table style="margin: 0 auto;">
-<tr>
-<td>Sort:
-<select name="sort" id="sort" onChange="gotopage()">
-<option value="1" selected>Newest</option>
-<option value="2">Highest Rated</option>
-</select></td>
-<td>Show:
-<select name="filter" id="filter" onChange="gotopage()">
-<option value="1" selected>All Comments</option>
-<option value="2">Excellent (+10 or better)</option>
-<option value="3">Great (+5 or better)</option>
-<option value="4">Good (0 or better)</option>
-<option value="5">Average (-5 or better)</option>
-<option value="6">Poor (-10 or better)</option>
-</select></td>
-<td>Show: <select name="perpage" id="perpage" onChange="gotopage()">
-<option value="5">5</option>
-<option value="10" selected>10</option>
-<option value="15">15</option>
-<option value="20">20</option>
-<option value="30">30</option>
-<option value="40">40</option>
-</select> per page
-</td>
-</tr>
-</table>
-</form>
-</div>
-<div id="aj-comments-wrap2">
-<div id="loading-message" style='display:none;'></div>
-<div id="aj-comments-new"></div>
-<div id="aj-comments">
-<div id='comwrap-994721'>
-<div class='aj-com' id='com-994721'>
-<div class='aj-com-top'>
-<div class='aj-com-top-lside'>
-<div class='aj-com-info'>
-<div class='userpicture-comments'><img src='http://www.gravatar.com/avatar/a39ba71af3bf9bf3cd136d7523f97862?d=mm&amp;s=50' width='50' height='50' alt="Ag5535's avatar" /></div>
-<a href='/profile/view/970391/fav-1/hacks-1.html' class='username-info'>Ag5535</a> <span title='User Offline' class='offline-icon'>&nbsp;&nbsp;&nbsp;&nbsp;</span> (2 weeks ago)
-</div>
-<div class='aj-com-hidereply'><a href='javascript:replyform(994721);' rel='nofollow'>Reply</a></div>
-<div class='aj-com-rating'>
-<div class='aj-com-rating-num aj-good-num' id='com-rating-994721'>
-+2
-</div>
-<div id='com-ratingcode-994721'>
-<a class='aj-rating-good' href='javascript:rateup(994721);' rel='nofollow'></a><a class='aj-rating-bad' href='javascript:ratedown(994721);' rel='nofollow'></a>
-</div>
-</div>
-</div>
-</div>
-<div class='aj-com-bot'>
-<div class='aj-com-bot-lside'>
-<p class='aj-com-text' id='aj-com-text-994721'>
-click 1 and 6 ROLLING AROUND AT THE SPEED OF SOUND XD
-</p>
-</div>
-<div class='aj-com-bot-rside'>
-</div></div>
-</div></div>
-<div id='comwrap-993026'>
-<div class='aj-com' id='com-993026'>
-<div class='aj-com-top'>
-<div class='aj-com-top-lside'>
-<div class='aj-com-info'>
-<div class='userpicture-comments'><img src='http://www.gravatar.com/avatar/fa999c3524b0d914954438259958127a?d=mm&amp;s=50' width='50' height='50' alt="BestLoser's avatar" /></div>
-<a href='/profile/view/963832/fav-1/hacks-1.html' class='username-info'>BestLoser</a> <span title='User Offline' class='offline-icon'>&nbsp;&nbsp;&nbsp;&nbsp;</span> (2 months ago)
-</div>
-<div class='aj-com-hidereply'><a href='javascript:replyform(993026);' rel='nofollow'>Reply</a></div>
-<div class='aj-com-rating'>
-<div class='aj-com-rating-num aj-good-num' id='com-rating-993026'>
-+23
-</div>
-<div id='com-ratingcode-993026'>
-<a class='aj-rating-good' href='javascript:rateup(993026);' rel='nofollow'></a><a class='aj-rating-bad' href='javascript:ratedown(993026);' rel='nofollow'></a>
-</div>
-</div>
-</div>
-</div>
-<div class='aj-com-bot'>
-<div class='aj-com-bot-lside'>
-<p class='aj-com-text' id='aj-com-text-993026'>
-I like when you turn into a bird and now you see pipes like the comment if you agree
-</p>
-</div>
-<div class='aj-com-bot-rside'>
-</div></div>
-</div><div id='com-replies-993026'><div class='aj-com replyto' id='com-993082'>
-<div class='aj-com-top'>
-<div class='aj-com-top-lside'>
-<div class='aj-com-info'>
-<div class='userpicture-comments'>
-<img src='http://www.gravatar.com/avatar/fa999c3524b0d914954438259958127a?d=mm&amp;s=50' width=30 height=30 alt="BestLoser's avatar" />
-</div>
-<a href='/profile/view/963832/fav-1/hacks-1.html' class='username-info'>BestLoser</a><span title='User Offline' class='offline-icon'>&nbsp;&nbsp;&nbsp;&nbsp;</span> (2 months ago)
-</div>
-<div class='aj-com-hidereply'>
-<a href='javascript:replyform(993082,993026)' rel='nofollow'>Reply</a>
-</div>
-<div class='aj-com-rating'>
-<div class='aj-com-rating-num aj-good-num' id='com-rating-993082'>
-+13
-</div><div id='com-ratingcode-993082'><a class='aj-rating-good' href='javascript:rateup(993082);' rel='nofollow'></a><a class='aj-rating-bad' href='javascript:ratedown(993082);' rel='nofollow'></a> </div></div>
-</div>
-</div><div class='aj-com-bot'>
-<div class='aj-com-bot-lside'>
-<p class='aj-com-text' id='aj-com-text-993082'>
-Yep i should only get dislikes cuz of my frickin name
-</p>
-</div>
-<div class='aj-com-bot-rside'></div></div></div><div class='aj-com replyto' id='com-993083'>
-<div class='aj-com-top'>
-<div class='aj-com-top-lside'>
-<div class='aj-com-info'>
-<div class='userpicture-comments'>
-<img src='http://www.gravatar.com/avatar/fa999c3524b0d914954438259958127a?d=mm&amp;s=50' width=30 height=30 alt="BestLoser's avatar" />
-</div>
-<a href='/profile/view/963832/fav-1/hacks-1.html' class='username-info'>BestLoser</a><span title='User Offline' class='offline-icon'>&nbsp;&nbsp;&nbsp;&nbsp;</span> (2 months ago)
-</div>
-<div class='aj-com-hidereply'>
-<a href='javascript:replyform(993083,993026)' rel='nofollow'>Reply</a>
-</div>
-<div class='aj-com-rating'>
-<div class='aj-com-rating-num aj-bad-num' id='com-rating-993083'>
--19
-</div><div id='com-ratingcode-993083'><a class='aj-rating-good' href='javascript:rateup(993083);' rel='nofollow'></a><a class='aj-rating-bad' href='javascript:ratedown(993083);' rel='nofollow'></a> </div></div>
-</div>
-</div><div class='aj-com-bot'>
-<div class='aj-com-bot-lside'>
-<p class='aj-com-text' id='aj-com-text-993083'>
-and i'm only a kid
-</p>
-</div>
-<div class='aj-com-bot-rside'></div></div></div></div></div>
-<div id='comwrap-992842'>
-<div class='aj-com' id='com-992842'>
-<div class='aj-com-top'>
-<div class='aj-com-top-lside'>
-<div class='aj-com-info'>
-<div class='userpicture-comments'><img src='http://www.gravatar.com/avatar/19945303c8936cf0ecdf0271b1e7ede4?d=mm&amp;s=50' width='50' height='50' alt="iiPelly's avatar" /></div>
-<a href='/profile/view/948211/fav-1/hacks-1.html' class='username-info'>iiPelly</a> <span title='User Offline' class='offline-icon'>&nbsp;&nbsp;&nbsp;&nbsp;</span> (2 months ago)
-</div>
-<div class='aj-com-hidereply'><a href='javascript:replyform(992842);' rel='nofollow'>Reply</a></div>
-<div class='aj-com-rating'>
-<div class='aj-com-rating-num aj-good-num' id='com-rating-992842'>
- +32
-</div>
-<div id='com-ratingcode-992842'>
-<a class='aj-rating-good' href='javascript:rateup(992842);' rel='nofollow'></a><a class='aj-rating-bad' href='javascript:ratedown(992842);' rel='nofollow'></a>
-</div>
-</div>
-</div>
-</div>
-<div class='aj-com-bot'>
-<div class='aj-com-bot-lside'>
-<p class='aj-com-text' id='aj-com-text-992842'>
-@Androidno17<br />
-<br />
-SelectLOL is the owner of this website and will obviously make some of the best hacks (no offense other hackers out there) on this website.<br />
-<br />
-Sorry to burst your bubble, but it's the truth.
-</p>
-</div>
-<div class='aj-com-bot-rside'>
-</div></div>
-</div></div>
-<div id='comwrap-992039'>
-<div class='aj-com' id='com-992039'>
-<div class='aj-com-top'>
-<div class='aj-com-top-lside'>
-<div class='aj-com-info'>
-<div class='userpicture-comments'><img src='http://www.gravatar.com/avatar/446e603d3afc952831cbf0a50834f63d?d=mm&amp;s=50' width='50' height='50' alt="Androidno17's avatar" /></div>
-<a href='/profile/view/962538/fav-1/hacks-1.html' class='username-info'>Androidno17</a> <span title='User Offline' class='offline-icon'>&nbsp;&nbsp;&nbsp;&nbsp;</span> (3 months ago)
-</div>
-<div class='aj-com-hidereply'><a href='javascript:replyform(992039);' rel='nofollow'>Reply</a></div>
-<div class='aj-com-rating'>
-<div class='aj-com-rating-num aj-good-num' id='com-rating-992039'>
-+37
-</div>
-<div id='com-ratingcode-992039'>
-<a class='aj-rating-good' href='javascript:rateup(992039);' rel='nofollow'></a><a class='aj-rating-bad' href='javascript:ratedown(992039);' rel='nofollow'></a>
-</div>
-</div>
-</div>
-</div>
-<div class='aj-com-bot'>
-<div class='aj-com-bot-lside'>
-<p class='aj-com-text' id='aj-com-text-992039'>
-Selectlol YOUR THE BEST HACKER EVER THAT IVE SEEN!
-</p>
-</div>
-<div class='aj-com-bot-rside'>
-</div></div>
-</div></div>
-<div id='comwrap-992021'>
-<div class='aj-com' id='com-992021'>
-<div class='aj-com-top'>
-<div class='aj-com-top-lside'>
-<div class='aj-com-info'>
-<div class='userpicture-comments'><img src='http://www.gravatar.com/avatar/cd4787477dc5ef953d8627165a16d134?d=mm&amp;s=50' width='50' height='50' alt="ItzPayton2's avatar" /></div>
-<a href='/profile/view/962509/fav-1/hacks-1.html' class='username-info'>ItzPayton2</a> <span title='User Offline' class='offline-icon'>&nbsp;&nbsp;&nbsp;&nbsp;</span> (3 months ago)
-</div>
-<div class='aj-com-hidereply'><a href='javascript:replyform(992021);' rel='nofollow'>Reply</a></div>
-<div class='aj-com-rating'>
-<div class='aj-com-rating-num aj-good-num' id='com-rating-992021'>
-+28
-</div>
-<div id='com-ratingcode-992021'>
-<a class='aj-rating-good' href='javascript:rateup(992021);' rel='nofollow'></a><a class='aj-rating-bad' href='javascript:ratedown(992021);' rel='nofollow'></a>
-</div>
-</div>
-</div>
-</div>
-<div class='aj-com-bot'>
-<div class='aj-com-bot-lside'>
-<p class='aj-com-text' id='aj-com-text-992021'>
-All of this is Perfect when you are a person that's poor on money in Duck life <br />
-and now they can experience being rich! Thank whoever made this.
-</p>
-</div>
-<div class='aj-com-bot-rside'>
-</div></div>
-</div></div>
-<div id='comwrap-991891'>
-<div class='aj-com' id='com-991891'>
-<div class='aj-com-top'>
-<div class='aj-com-top-lside'>
-<div class='aj-com-info'>
-<div class='userpicture-comments'><img src='http://www.gravatar.com/avatar/3be13f4d47ce1e1f964e7808cda94a33?d=mm&amp;s=50' width='50' height='50' alt="EnterTheJarzin's avatar" /></div>
-<a href='/profile/view/961078/fav-1/hacks-1.html' class='username-info'>EnterTheJarzin</a> <span title='User Offline' class='offline-icon'>&nbsp;&nbsp;&nbsp;&nbsp;</span> (3 months ago)
-</div>
-<div class='aj-com-hidereply'><a href='javascript:replyform(991891);' rel='nofollow'>Reply</a></div>
-<div class='aj-com-rating'>
-<div class='aj-com-rating-num aj-good-num' id='com-rating-991891'>
-+26
-</div>
-<div id='com-ratingcode-991891'>
-<a class='aj-rating-good' href='javascript:rateup(991891);' rel='nofollow'></a><a class='aj-rating-bad' href='javascript:ratedown(991891);' rel='nofollow'></a>
-</div>
-</div>
-</div>
-</div>
-<div class='aj-com-bot'>
-<div class='aj-com-bot-lside'>
-<p class='aj-com-text' id='aj-com-text-991891'>
-Ahh, I miss the old duck life...<br />
-BONUS DUCKS!
-</p>
-</div>
-<div class='aj-com-bot-rside'>
-</div></div>
-</div></div>
-<div id='comwrap-991490'>
-<div class='aj-com' id='com-991490'>
-<div class='aj-com-top'>
-<div class='aj-com-top-lside'>
-<div class='aj-com-info'>
-<div class='userpicture-comments'><img src='http://www.gravatar.com/avatar/a5d7559c5417ebf0f07676befc53d71b?d=mm&amp;s=50' width='50' height='50' alt="Ammolite's avatar" /></div>
-<a href='/profile/view/943968/fav-1/hacks-1.html' class='username-info'>Ammolite</a> <span title='User Offline' class='offline-icon'>&nbsp;&nbsp;&nbsp;&nbsp;</span> (4 months ago)
-</div>
-<div class='aj-com-hidereply'><a href='javascript:replyform(991490);' rel='nofollow'>Reply</a></div>
-<div class='aj-com-rating'>
-<div class='aj-com-rating-num aj-good-num' id='com-rating-991490'>
-+25
-</div>
-<div id='com-ratingcode-991490'>
-<a class='aj-rating-good' href='javascript:rateup(991490);' rel='nofollow'></a><a class='aj-rating-bad' href='javascript:ratedown(991490);' rel='nofollow'></a>
-</div>
-</div>
-</div>
-</div>
-<div class='aj-com-bot'>
-<div class='aj-com-bot-lside'>
-<p class='aj-com-text' id='aj-com-text-991490'>
-if you want a quick way to train any of your pets to max just keep pressing TAB until there is a yellow outline outside the train button then just press and hold ENTER hopefully this helped
-</p>
-</div>
-<div class='aj-com-bot-rside'>
-</div></div>
-</div><div id='com-replies-991490'><div class='aj-com replyto' id='com-992022'>
-<div class='aj-com-top'>
-<div class='aj-com-top-lside'>
-<div class='aj-com-info'>
-<div class='userpicture-comments'>
-<img src='http://www.gravatar.com/avatar/cd4787477dc5ef953d8627165a16d134?d=mm&amp;s=50' width=30 height=30 alt="ItzPayton2's avatar" />
-</div>
-<a href='/profile/view/962509/fav-1/hacks-1.html' class='username-info'>ItzPayton2</a><span title='User Offline' class='offline-icon'>&nbsp;&nbsp;&nbsp;&nbsp;</span> (3 months ago)
-</div>
-<div class='aj-com-hidereply'>
-<a href='javascript:replyform(992022,991490)' rel='nofollow'>Reply</a>
-</div>
-<div class='aj-com-rating'>
-<div class='aj-com-rating-num aj-bad-num' id='com-rating-992022'>
--8
-</div><div id='com-ratingcode-992022'><a class='aj-rating-good' href='javascript:rateup(992022);' rel='nofollow'></a><a class='aj-rating-bad' href='javascript:ratedown(992022);' rel='nofollow'></a> </div></div>
-</div>
-</div><div class='aj-com-bot'>
-<div class='aj-com-bot-lside'>
-<p class='aj-com-text' id='aj-com-text-992022'>
-Thanks this really maxed out my pet :)
-</p>
-</div>
-<div class='aj-com-bot-rside'></div></div></div></div></div>
-<div id='comwrap-987232'>
-<div class='aj-com' id='com-987232'>
-<div class='aj-com-top'>
-<div class='aj-com-top-lside'>
-<div class='aj-com-info'>
-<div class='userpicture-comments'><img src='http://www.gravatar.com/avatar/9f052579a6fb8c3e6c1346f1a6e1ee9c?d=mm&amp;s=50' width='50' height='50' alt="Cjskywalker06's avatar" /></div>
-<a href='/profile/view/935773/fav-1/hacks-1.html' class='username-info'>Cjskywalker06</a> <span title='User Offline' class='offline-icon'>&nbsp;&nbsp;&nbsp;&nbsp;</span> (7 months ago)
-</div>
-<div class='aj-com-hidereply'><a href='javascript:replyform(987232);' rel='nofollow'>Reply</a></div>
-<div class='aj-com-rating'>
-<div class='aj-com-rating-num aj-good-num' id='com-rating-987232'>
-+52
-</div>
-<div id='com-ratingcode-987232'>
-<a class='aj-rating-good' href='javascript:rateup(987232);' rel='nofollow'></a><a class='aj-rating-bad' href='javascript:ratedown(987232);' rel='nofollow'></a>
-</div>
-</div>
-</div>
-</div>
-<div class='aj-com-bot'>
-<div class='aj-com-bot-lside'>
-<p class='aj-com-text' id='aj-com-text-987232'>
-can someone hack duck life 4?
-</p>
-</div>
-<div class='aj-com-bot-rside'>
-</div></div>
-</div></div>
-<div id='comwrap-986760'>
-<div class='aj-com' id='com-986760'>
-<div class='aj-com-top'>
-<div class='aj-com-top-lside'>
-<div class='aj-com-info'>
-<div class='userpicture-comments'><img src='http://www.gravatar.com/avatar/cdb00094e6b5f23e766b2ee67f45ddb6?d=mm&amp;s=50' width='50' height='50' alt="JDMGaming793's avatar" /></div>
-<a href='/profile/view/948286/fav-1/hacks-1.html' class='username-info'>JDMGaming793</a> <span title='User Offline' class='offline-icon'>&nbsp;&nbsp;&nbsp;&nbsp;</span> (8 months ago)
-</div>
-<div class='aj-com-hidereply'><a href='javascript:replyform(986760);' rel='nofollow'>Reply</a></div>
-<div class='aj-com-rating'>
-<div class='aj-com-rating-num aj-good-num' id='com-rating-986760'>
-+24
-</div>
-<div id='com-ratingcode-986760'>
-<a class='aj-rating-good' href='javascript:rateup(986760);' rel='nofollow'></a><a class='aj-rating-bad' href='javascript:ratedown(986760);' rel='nofollow'></a>
-</div>
-</div>
-</div>
-</div>
-<div class='aj-com-bot'>
-<div class='aj-com-bot-lside'>
-<p class='aj-com-text' id='aj-com-text-986760'>
-whats the specials for
-</p>
-</div>
-<div class='aj-com-bot-rside'>
-</div></div>
-</div></div>
-<div id='comwrap-985944'>
-<div class='aj-com' id='com-985944'>
-<div class='aj-com-top'>
-<div class='aj-com-top-lside'>
-<div class='aj-com-info'>
-<div class='userpicture-comments'><img src='http://www.gravatar.com/avatar/24ab249c3c837b68438c3c4e33918e25?d=mm&amp;s=50' width='50' height='50' alt="hacker22149840's avatar" /></div>
-<a href='/profile/view/946110/fav-1/hacks-1.html' class='username-info'>hacker22149840</a> <span title='User Offline' class='offline-icon'>&nbsp;&nbsp;&nbsp;&nbsp;</span> (8 months ago)
-</div>
-<div class='aj-com-hidereply'><a href='javascript:replyform(985944);' rel='nofollow'>Reply</a></div>
-<div class='aj-com-rating'>
-<div class='aj-com-rating-num aj-good-num' id='com-rating-985944'>
-+86
-</div>
-<div id='com-ratingcode-985944'>
-<a class='aj-rating-good' href='javascript:rateup(985944);' rel='nofollow'></a><a class='aj-rating-bad' href='javascript:ratedown(985944);' rel='nofollow'></a>
-</div>
-</div>
-</div>
-</div>
-<div class='aj-com-bot'>
-<div class='aj-com-bot-lside'>
-<p class='aj-com-text' id='aj-com-text-985944'>
-add key hack pls<br />
-like if u want
-</p>
-</div>
-<div class='aj-com-bot-rside'>
-</div></div>
-</div></div><div class="pagination-comments"><a class='pg-inactive'>&lt;&lt;</a><a class="pg-active" href="http://www.arcadeprehacks.com/game/27344/-duck-life-treasure-hunt.html#!page-1" onclick="javascript:return gotopage(1);" id="aj-pagelink-1">1</a><a class="pg-normal" href="http://www.arcadeprehacks.com/game/27344/-duck-life-treasure-hunt.html#!page-2" onclick="javascript:return gotopage(2);" id="aj-pagelink-2">2</a><a class="pg-normal" href="http://www.arcadeprehacks.com/game/27344/-duck-life-treasure-hunt.html#!page-3" onclick="javascript:return gotopage(3);" id="aj-pagelink-3">3</a><a class="pg-normal" href="http://www.arcadeprehacks.com/game/27344/-duck-life-treasure-hunt.html#!page-4" onclick="javascript:return gotopage(4);" id="aj-pagelink-4">4</a><a class="pg-normal" href="http://www.arcadeprehacks.com/game/27344/-duck-life-treasure-hunt.html#!page-5" onclick="javascript:return gotopage(5);" id="aj-pagelink-5">5</a><span class="pg-dots">. . . .</span><a class="pg-normal" href="http://www.arcadeprehacks.com/game/27344/-duck-life-treasure-hunt.html#!page-10" onclick="javascript:return gotopage(10);" id="aj-pagelink-10">10</a><a class='pg-normal' href='http://www.arcadeprehacks.com/game/27344/-duck-life-treasure-hunt.html#!page-2' onclick='javascript:return gotopage(2);' id='aj-pagelink-2'>&gt;&gt;</a><span class='number-comments'>( 98 comments )</span></div></div>
-</div>
-<div class='aj-comments-wrap3'>
-<script type='text/javascript'>
-			function textCounter(numberC) {
-				var maxlimit = 250;
-				var field = document.getElementById("aj_comment_"+numberC);
-				if (field.value.length > maxlimit) 
-					field.value = field.value.substring(0, maxlimit);
-				else {
-					document.getElementById("chars-"+numberC).innerHTML = maxlimit - field.value.length;
-				}	
-			}
-		</script>
-<form action="javascript:post_com();" name="aj_form" id="aj_form">
-<input type="hidden" name="aj_lastcomid" id="aj_lastcomid" value="994721" />
-<table class='form-send-comm'>
-<tr>
-<td class='aj-label' colspan='2'>
-Enter your comment:
-</td>
-</tr>
-<tr>
-<td colspan='2'>
-<span class='msgbox'><textarea name="aj_comment" id="aj_comment_0" class="style_reply" rows="8" cols="25" onKeyDown="textCounter('0');" onKeyUp="textCounter('0');"></textarea></span>
-</td>
-</tr>
-<tr>
-<td class='chars-left'><span id='chars-0' class='chars'>250</span> chars left</td>
-<td>
-<input type="submit" name="AJ_SUBCOM" value="" class='sendcomm' />
-</td>
-</tr>
-</table>
-</form>
-<div id="mod-tafad">
-
-
-<div align="center" id="Arcadeprehacks_300x250_BTF_Comments">
-<script data-cfasync="false" type='text/javascript'>
-							        freestar.queue.push(function () { googletag.display('Arcadeprehacks_300x250_BTF_Comments'); });
-							    </script>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class='box-content-right'></div>
-</div>
-<div class='box-bottom-thin'>
-<div class='thin-box-bottom-left'></div>
-<div class='thin-box-bottom-middle'></div>
-<div class='thin-box-bottom-right'></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class='footer'>
-<div class='footer-cnt'>
-<p>Welcome to ArcadePreHacks.com, the largest online game cheat portal on the internet. Our objective is to create a different gaming experience for our users using pre-hacks. Game players who find it hard to play some games can come to arcadeprehacks.com and use the cheats in the game to help complete them, while others like to use cheats for a sandbox mode.</p>
-</div>
-<div class='footer-list'>
-<a href='http://www.facebook.com/pages/Arcade-Prehacks/247963471910550'>Like us on Facebook</a>|
-<a href='http://twitter.com/ArcadePreHacks'>Follow us on Twitter</a>|
-<a href='http://www.arcadeprehacks.com/page/13.html'>Link to Arcade Prehacks</a>|<a href='http://www.arcadeprehacks.com/contact.html'>Contact us</a>|
-<a href='http://www.arcadeprehacks.com/page/1.html'>Privacy</a></div>
-<div class='footer-copy'>&copy; 2017 <a href="http://www.arcadeprehacks.com/">ArcadePrehacks.com</a></div>
-</div>
-<div class='stats'>
-<div class='site-stats'>Site Statistics</div>
-<p class='site-stats-a'>Registered Users: <span>495344</span></p>
-<p class='site-stats-b'>Hacks Played Today: <span>248481</span></p>
-<p class='site-stats-a'>Total Hacks Played: <span>897524594</span></p>
-<p class='site-stats-b'>&nbsp;</p>
-<p class='site-stats-a'>There are <b>983</b> users online</p><p class='site-stats-b'><span><b>11</b> Members, <b>972</b> Guests</span></p></div>
-<div style='clear:both;'></div>
-</div>
-</div>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        if (typeof SITE !== 'undefined')
-            $('.file-wrapper input[type=file]').bind('change focus click', SITE.fileInputs);
-
-        /*if ($("#azk61973").length > 0 ) {
-         $("#azk61973").hover(function(){
-         $("#azk61973").animate({height:250});
-         }, function(){
-         $("#azk61973").animate({height:90});
-         });
-         } */
-    })
-</script>
-<script type='text/javascript'>
-        $('#flashmessage').remove();
-    </script>
-<script type="text/javascript">
-    <!--
-    function popup(URL, ww, wh) {
-        day = new Date();
-        id = day.getTime();
-        eval("page" + id + " = window.open(URL, '" + id + "', 'location=0,toolbar=0,scrollbars=0,statusbar=0,menubar=0,resizable=yes,width="+ww+",height="+wh+",left = 40,top = 40');");
-    }
-    $(document).ready(function(){
-        $("ul.menu").children("li").click(function(){
-            window.location = $(this).children("a").attr('href');
-        });
-
-        var $topAd = $('.ads').children('.srCustomizer').children('object').attr('height');
-
-        if ($topAd > 90) {
-            $('.ads-small').hide();
-            $('.ads > img').hide();
-        }
-
-                $('.lightbox').click(function() {
-            lightsControl();
-        });
-
-        
-            });
-    -->
-</script>
-<script type="text/javascript" src="http://www.arcadeprehacks.com/plugins/site/themes/arcadeprehacks/aj_funcs.js?__v=7"></script>
-
-<script type="text/javascript">
-    (function() {
-        var li = document.createElement('script'); li.type = 'text/javascript'; li.async = true;
-        li.src = window.location.protocol + '//platform.stumbleupon.com/1/widgets.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(li, s);
-    })();
-</script>
-<script type="text/javascript" data-cfasync="false">
-    var _gaq = _gaq || [];
-
-    _gaq.push(['_setCustomVar',3,'2nd All Games','With Intergi Ad',3]);
-    _gaq.push(['_setAccount', 'UA-1638648-6']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-</script>
 </body>
 </html>
