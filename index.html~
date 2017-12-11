@@ -66,10 +66,6 @@
 	
 	</a>
 	
-	<a href="projects.html">
-	</section>
-       <img style="width:100px;" src="http://media.doink.com/thumbnail/2e976b14-14b3-4986-b10e-3673a77b8d85/thumbnail.png"/>
-       
       
         </section>
 	</a>
@@ -90,6 +86,7 @@
 	  
 	  
 		</style>
+			
 	</head>
 	<body style="background-color:white;color:blue;
 	font-size:30px;font-weight:bolder;">
@@ -116,6 +113,12 @@
 	      <a href="TestHide.html">
 	  nuke
 	        </a>
+	        
+	        <li>
+	      <a href="newroads.html">
+	  newroads
+	        </a>
+	        </li>
 	  </p>
 	  
 	  <p>
@@ -124,11 +127,10 @@
 	     <li>project3</li>
 	  
 	  </p>
-	   </section>
+	   
        <img style="width:446px;" src="http://i.imgur.com/7ii16eh.gif"/>
         <img style="width:400px;" src="https://media.giphy.com/media/SQgbkziuGrNxS/200.gif"/>
         </section>
-	</section>
 	</div>
 		</body>
 

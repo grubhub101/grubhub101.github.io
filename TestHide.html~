@@ -26,6 +26,7 @@
 			font-size:50;
 	  }
 	  
+
 		</style>
 		<script>
 		    function hideImg(x) {
@@ -44,6 +45,7 @@
 	font-size:30px;font-weight:bolder;">
 	<div>
 	
+	
 	nuke
 	<a href="AboutMe.html" />
 	About Me
@@ -55,15 +57,16 @@
 	</a>
 	
 	</a>
+		 
 	<br>
 
-    
+    <section>
          <img id="imgt" style="width:400px;" src="http://beforeitsnews.com/contributor/upload/106013/images/trump.gif"; onclick="hideImg('imgt');">
           <img id="imgn" style="width:400px;" src="https://media.tenor.com/images/ba4e7a317506ea4142214ef59be49bcd/tenor.gif"; onclick="hideImg('imgn');">
            <img id="imgg" style="width:400px;" src="https://static.tumblr.com/545caf2bf4b568066046adfd4c3c6f57/r8jitfa/tYfn90vo6/tumblr_static_tumblr_static__640.gif"; onclick="hideImg('imgg');">
             <img id="imgc" style="width:400px;" src="http://38.media.tumblr.com/06e38590674aee0bd54d40b3dce652b2/tumblr_my1qkymdqd1qj5ahlo1_500.gif"; onclick="hideImg('imgc');">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/DBBt7IhHOFQ" frameborder="0" allowfullscreen></iframe>
-        </section>
+        
 	</section>
 	</div>
 		</body>
