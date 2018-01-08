@@ -1,0 +1,89 @@
+<html>
+	<head>
+	 
+		<title>
+			test
+			
+		     </title>
+			 
+			 <script>
+			alert("Hello I Am Your Master Obey Me")
+			
+			function websiteInfo (){
+				//change color
+			    document.getElementById("info").style.background = "blue";
+			    //change text
+			    document.getElementById("info").innerHTML = "hi, this is my first website, i will add more features in the future thanks for checking my website out soon to have games"
+			    " right now on my website are a few gifs a text bar to enter text a explosive turtle and this. ";
+			    //change text color
+			    document.getElementById("info").style.color = "green"
+			}
+			    function websiteInfo2 (){
+				//change color
+			    document.getElementById("info2").style.background = "blue";
+			    //change text
+			    document.getElementById("info2").innerHTML = "thanks for reading all of this, my websites goal is to make games (no games made yet still learning to code) "
+			    "that are fun to play and teach people about rocket science and other sciences and maths, getting people smarter while having fun";
+			    //change text color
+			    document.getElementById("info2").style.color = "green"
+			    }
+			
+			
+			</script>
+			
+			<style>
+		div{
+			background-color:b;
+			color:magenta;
+			margin:20px;background-color:yellow;padding:200px;
+	border-radius:20px;text-align:center;
+		}
+	  a:link{
+			background-color:black;
+			color:green;
+	  }
+	  a:visited{
+			background-color:yellow;
+			color:blue;
+	  }
+	   a:hover{
+			background-color:yellow;
+			color:blue;
+			font-size:50;
+	  }
+	  
+		</style>
+	</head>
+	<body style="background-color:white;color:blue;
+	font-size:30px;font-weight:bolder;">
+	<div>
+	
+	projects 2
+	<a href="AboutMe.html" />
+	About Me
+	
+	</a>
+			
+			<a href="index.html">
+			home
+			</a>
+			
+			
+			</a>
+			<br>
+			
+		
+			
+		    </section>
+					 <p id="info" onclick ="websiteInfo();">
+					 	click for website info
+					 </p>
+					 <p id="info2" onclick ="websiteInfo2();">
+					 	click for more website info
+					 </p>
+			</section>
+			</div>
+		</body>
+
+
+</html>
