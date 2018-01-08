@@ -28,6 +28,14 @@
 	  
 		</style>
 			<script>
+				var count = 0;
+				
+					function test(){
+						count = count + 1;
+						document.getElementById("cookie").innerHTML="Count = " + count;
+						
+					}
+					
 					function clickme() {
 						var name = document.getElementById("nametext").value;
 						document.getElementById("circle").innerHTML= "hello " + name + "!";
@@ -37,8 +45,14 @@
 					function clickme2() {
 						var number = document.getElementById("age").value;
 						document.getElementById("circle2").innerHTML= "hello you are " + number + " years old!";
-					}		
+					}
+					
+					function clickme3() {
+						var number = document.getElementById("game").value;
+						document.getElementById("circle3").innerHTML= "hello you like " + number + " types of games!";
+					}
 				</script>
+				
 	</head>
 	<body style="background-color:white;color:blue;
 	font-size:30px;font-weight:bolder;">
@@ -74,12 +88,38 @@
 	<section>
 	   <div id="circle2"style="height:100px;width:200px;background-color:blue;
 	 		  border-radius:20px;position:relative;top:20px;left:200px;"></div>
+	 		 
+	 		  
+	 		    Your Favriote Type of Game:
+	 		    
+	 		    <select id="game">
+				  <option value="Shooter">Shooter</option>
+				  <option value="mmo">Mmo</option>
+				  <option value="simulations">Simulations</option>
+				  <option value="Adventure">Adventure</option>
+				  <option value="RTS">RTS</option>
+				  <option value="Puzzle">Puzzle</option>
+				  <option value="Action">Action</option>
+				  <option value="Stealth Shooter">Stealth Shooter</option>
+				  <option value="Combat">Combat</option>
+				  <option value="Sports">Sports</option>
+				  <option value="RPG">RPG</option>
+				  <option value="Educational">Educational</option>
+				</select>
+		<input type= "button" value="click me!" onclick="clickme3();"
+	<section>
+	   <div id="circle3"style="height:100px;width:200px;background-color:blue;
+	 		  border-radius:20px;position:relative;top:20px;left:200px;"></div>
+	 		  
+	 		  <p id="cookie">count=0 </p>
+	 		  <img  onclick="test();" src="cookie.gif" style="300px;"/>
+	 		  
 	 		  </div>
 	 		  
 	 		  <br>
 	 		  
 	 		      
-	<img scr="fire.gif" style+"300px;"/>
+	
 	
 	</section>
 	<body/>
