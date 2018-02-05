@@ -2,7 +2,7 @@
 	<head>
 	 
 		<title>
-			aaaaaaaaaahdsjhshfgsdahfsdafsdgdshfgshbsdhjcgsdh
+			EthyGlass
 			
 		</title>
 		<script>
@@ -12,8 +12,8 @@
 		</script>
 		<style>
 		div{
-			background-color:b;
-			color:magenta;
+			background-color:Green;
+			color:Navy;
 			margin:40px;background-color:black;padding:20px;
 	border-radius:200px;text-align:center;
 		}
@@ -41,35 +41,7 @@
 	
 	Home
 	<a href="AboutMe.html" />
-	A
-	
-	</a>
-	<a href="AboutMe.html" />
-	b
-	
-	</a>
-	<a href="AboutMe.html" />
-	o
-	
-	</a>
-	<a href="AboutMe.html" />
-	u
-	
-	</a>
-	<a href="AboutMe.html" />
-	t
-	
-	</a>
-	<a href="AboutMe.html" />
-	.
-	
-	</a>
-	<a href="AboutMe.html" />
-	M
-	
-	</a>
-	<a href="AboutMe.html" />
-	e
+	About Me
 	
 	</a>
 	
