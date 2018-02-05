@@ -33,7 +33,14 @@
 					function test(){
 						count = count + 1;
 						document.getElementById("cookie").innerHTML="Count = " + count;
-						
+						if(count>=10)
+						{
+							count= count - 10;
+							document.getElementById("hiddenImg").innerHTML="<img style='width:60px;' "
+							+ "src='http://i.imgur.com/7ii16eh.gif'/>";
+						}
+		
+						 
 					}
 					
 					function clickme() {
@@ -110,10 +117,13 @@
 	<section>
 	   <div id="circle3"style="height:100px;width:200px;background-color:blue;
 	 		  border-radius:20px;position:relative;top:20px;left:200px;"></div>
+	 		 
+	 		  <div id="circle4"style="height:100px;width:200px;background-color:blue;
+	 		  border-radius:20px;position:relative;top:20px;left:200px;"></div>
 	 		  
 	 		  <p id="cookie">count=0 </p>
 	 		  <img  onclick="test();" src="cookie.gif" style="300px;"/>
-	 		  
+	 		  	<div id="hiddenImg"> </div>
 	 		  </div>
 	 		  
 	 		  <br>
