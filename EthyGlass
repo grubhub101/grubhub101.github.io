@@ -13,7 +13,7 @@
 		<style>
 		div{
 			background-color:Green;
-			color:Navy;
+			color:White;
 			margin:40px;background-color:black;padding:20px;
 	border-radius:200px;text-align:center;
 		}
@@ -37,9 +37,13 @@
 	font-size:30px;font-weight:bolder;">
 	
 	<div>
+	EthyGlass
+	
+	<a href="index.html" />
+      Home	
+	</a>
 	
 	
-	Home
 	<a href="AboutMe.html" />
 	About Me
 	
@@ -52,7 +56,8 @@
 	</a>
 	<br>
 
-	hello, this is grape bison
+	This is ethy glass it is currentally in beta testing and can make a hologram so it
+	is ar
 	<section>
 	
 	</section>
@@ -63,52 +68,5 @@
 	 
 
 	  
-	  
-		</style>
-			
-	</head>
-	<body style="background-color:white;color:blue;
-	font-size:30px;font-weight:bolder;">
-	<div>
-	
-	
-
-	
-	  <p>
-	  <li>
-	        <a href="clickable.html">
-	  .......hang
-	        </a>
-	  
-	   </li>
-	   <li>
-	      <a href="project2.html">
-	  project 2
-	        </a>
-	  
-	  
-	   </li>
-	   <li>
-	      <a href="TestHide.html">
-	  nuke
-	        </a>
-	        
-	       
-	  </p>
-	  
-	  <p>
-	     </li>
-	     <li>project2</li>
-	     <li>project3</li>
-	     <li>EthyGlass</li>
-	  
-	  </p>
-	   
-       <img style="width:446px;" src="http://i.imgur.com/7ii16eh.gif"/>
-        <img style="width:400px;" src="https://media.giphy.com/media/SQgbkziuGrNxS/200.gif"/>
-        </section>
-	</div>
-		</body>
-
 
 </html>

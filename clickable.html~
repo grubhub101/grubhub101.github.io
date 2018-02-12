@@ -58,6 +58,10 @@
 						var number = document.getElementById("game").value;
 						document.getElementById("circle3").innerHTML= "hello you like " + number + " types of games!";
 					}
+					function clickme4() {
+						var number = document.getElementById("game").value;
+						document.getElementById("circle4").innerHTML= "hello you like Poop!";
+					}
 				</script>
 				
 	</head>
@@ -112,15 +116,18 @@
 				  <option value="Sports">Sports</option>
 				  <option value="RPG">RPG</option>
 				  <option value="Educational">Educational</option>
+				  <option value="vr">Educational</option>
 				</select>
 		<input type= "button" value="click me!" onclick="clickme3();"
 	<section>
 	   <div id="circle3"style="height:100px;width:200px;background-color:blue;
 	 		  border-radius:20px;position:relative;top:20px;left:200px;"></div>
-	 		 
+	 		
+	 		  <input type= "button" value="Auto Clicker" onclick="clickme4();"
+	<section>
 	 		  <div id="circle4"style="height:100px;width:200px;background-color:blue;
-	 		  border-radius:20px;position:relative;top:20px;left:200px;"></div>
-	 		  
+	 		  border-radius:20px;position:relative;top:350px;left:100px;"></div>
+	 		 
 	 		  <p id="cookie">count=0 </p>
 	 		  <img  onclick="test();" src="cookie.gif" style="300px;"/>
 	 		  	<div id="hiddenImg"> </div>
