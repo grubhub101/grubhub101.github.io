@@ -82,7 +82,7 @@
 
 	hello, this is grape bison
 	<section>
-	i will be your host
+	
 	</section>
 	
 	
@@ -119,6 +119,10 @@
 	   <li>
 	      <a href="TestHide.html">
 	  nuke
+	        </a>
+	        <li>
+	      <a href="EthyGlass">
+	  EthyGlass
 	        </a>
 	        
 	       
