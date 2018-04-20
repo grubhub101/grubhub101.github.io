@@ -29,16 +29,14 @@
 		</style>
 			<script>
 				var count = 0;
+				var cps = 0;
+				var acp = 10
+				var cpsa = 1;
 				
 					function test(){
 						count = count + 1;
 						document.getElementById("cookie").innerHTML="Count = " + count;
-						if(count>=10)
-						{
-							count= count - 10;
-							document.getElementById("hiddenImg").innerHTML="<img style='width:60px;' "
-							+ "src='http://i.imgur.com/7ii16eh.gif'/>";
-						}
+						
 		
 						 
 					}
@@ -59,13 +57,56 @@
 						document.getElementById("circle3").innerHTML= "hello you like " + number + " types of games!";
 					}
 					function clickme4() {
+						
 						var number = document.getElementById("game").value;
-						document.getElementById("circle4").innerHTML= "hello you like Poop!";
+						document.getElementById("circle4").innerHTML= "cps is " + cps + "-----" +
+						 "Auto clicker price is " + acp;
+						
+						if(count>=acp
+						{
+							count= count - acp;
+						
+							document.getElementById("hiddenImg").innerHTML="<img style='width:60px;' "
+							acp = acp + (acp/100);
+							acp= Math.round(acp);
+							
+							document.getElementById("circle4").innerHTML= "cps is " + cps + "-----" +
+						 "Auto clicker price is " + acp;
+						}
 					}
+					function clickme5() {
+						
+						var number = document.getElementById("game").value;
+						document.getElementById("circle4").innerHTML= "cps is " + cps + "-----" +
+						 "oven price is " + acp1 ;
+						
+						if(count>=acp)
+						{
+							count= count - acp;
+						
+							document.getElementById("hiddenImg").innerHTML="<img style='width:60px;' "
+							ovp = ovp + (ovp/100);
+							ovp= Math.round(ovp);
+							
+							document.getElementById("circle4").innerHTML= "cps is " + cps + "-----" +
+						 "Auto clicker price is " + ovp;
+						}
+					}
+					var myVar;
+
+				function myFunction() {
+					myVar = setInterval(alertFunc, 1000);
+				}
+				
+				function alertFunc() {
+					count += cps;
+					document.getElementById("cookie").innerHTML="Count = " + count;
+				}
+
 				</script>
 				
 	</head>
-	<body style="background-color:white;color:blue;
+	<body onload = "myFunction();clickme4()" style="background-color:white;color:blue;
 	font-size:30px;font-weight:bolder;">
 	<div>
 	
@@ -125,11 +166,11 @@
 	 		
 	 		  <input type= "button" value="Auto Clicker" onclick="clickme4();"
 	<section>
-	 		  <div id="circle4"style="height:100px;width:200px;background-color:blue;
+	 		  <div id="circle4"style="height:150px;width:200px;background-color:blue;
 	 		  border-radius:20px;position:relative;top:350px;left:100px;"></div>
 	 		 
 	 		  <p id="cookie">count=0 </p>
-	 		  <img  onclick="test();" src="cookie.gif" style="300px;"/>
+	 		  <img  onclick="test();" src="https://cdn.dribbble.com/users/583186/screenshots/3064515/oreo.gif" style="300px;"/>
 	 		  	<div id="hiddenImg"> </div>
 	 		  </div>
 	 		  

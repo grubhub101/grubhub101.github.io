@@ -62,7 +62,7 @@
 						document.getElementById("circle4").innerHTML= "cps is " + cps + "-----" +
 						 "Auto clicker price is " + acp;
 						
-						if(count>=acp
+						if(count>=acp)
 						{
 							count= count - acp;
 						
@@ -77,12 +77,17 @@
 					function clickme5() {
 						
 						var number = document.getElementById("game").value;
+<<<<<<< HEAD
 						document.getElementById("circle5").innerHTML= "cps is " + ovp + "-----" +
 						 "oven price is " + ovp ;
+=======
+						document.getElementById("circle4").innerHTML= "cps is " + cps + "-----" +
+						 "oven price is " + ovp1 ;
+>>>>>>> ead652382626ae8b80326f948a17812c619e7109
 						
 						if(count>=ovp)
 						{
-							count= count - acp;
+							count= count - ovp;
 						
 							document.getElementById("hiddenImg").innerHTML="<img style='width:60px;' "
 							ovp = ovp + (ovp/10);
@@ -106,7 +111,7 @@
 				</script>
 				
 	</head>
-	<body onload = "myFunction();clickme4()" style="background-color:white;color:blue;
+	<body onload = "myFunction();clickme4();" style="background-color:white;color:blue;
 	font-size:30px;font-weight:bolder;">
 	<div>
 	

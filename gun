@@ -3,47 +3,15 @@
 	
 	<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
 <script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyDSfDm3Ycp_dUP6xBf5NBOGYOBDEAOvXmE",
-    authDomain: "gun-violence.firebaseapp.com",
-    databaseURL: "https://gun-violence.firebaseio.com",
-    projectId: "gun-violence",
-    storageBucket: "gun-violence.appspot.com",
-    messagingSenderId: "492059212815"
-  }
-  
+ 
 
-var peopleRef = firebase.database().ref("people/");
 
-playersRef.set ({
-   john: {
-      
-      age: 30
-   },
-	
-   bob: {
-      
-      age: 20
-   }
-});
-
-var johnRef = firebase.database().ref("players/john");
-								
-								johnRef.update ({
-								   "age": 10
-								});
-    
-  
-  };
-  firebase.initializeApp(config);
-  console.log(firebase);
 </script>
 
 	
 	 
 		<title>
-			aaaaaaaaaahdsjhshfgsdahfsdafsdgdshfgshbsdhjcgsdh
+			Protest to increase background checks
 			
 		</title>
 		<style>
@@ -73,19 +41,9 @@ var johnRef = firebase.database().ref("players/john");
 	  
 		</style>
 			<script>
-				var count = 0;
-				var cps = 0;
-				var acp = 10;
-				var cpsa = 1;
-				
-	
+			
 				
 				
-				
-					function test(){
-						count = count + 1;
-						document.getElementById("cookie").innerHTML="Count = " + count;
-						
 		
 						 
 					}
@@ -125,7 +83,7 @@ var johnRef = firebase.database().ref("players/john");
 
 	<br>
 
-	hello, this is grape bison
+	Please sign to support my cause
 	<section>
 	<br>
 		Name:<input type="text" id="nametext" value =" "/>

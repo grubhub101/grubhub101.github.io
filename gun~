@@ -11,7 +11,7 @@
     projectId: "gun-violence",
     storageBucket: "gun-violence.appspot.com",
     messagingSenderId: "492059212815"
-    
+  }
   
 
 var peopleRef = firebase.database().ref("people/");
