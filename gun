@@ -11,7 +11,7 @@
 	
 	 
 		<title>
-			Protest to increase background checks
+			Protest to increase background checks with a petition
 			
 		</title>
 		<style>
@@ -83,7 +83,7 @@
 
 	<br>
 
-	Please sign to support my cause
+	Please sign to support my petition
 	<section>
 	<br>
 		Name:<input type="text" id="nametext" value =" "/>
